@@ -25,7 +25,7 @@ export function CheckoutPayment({
     line2?: string
     city: string
     region: string
-    postalCode: string
+    postalCode?: string
     country: string
   }
 }) {

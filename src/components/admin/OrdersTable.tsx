@@ -367,8 +367,8 @@ function OrderDetail({ order }: { order: Order }) {
             </>
           )}
           <br />
-          {order.address.city}, {order.address.region}{' '}
-          {order.address.postalCode}
+          {order.address.city}, {order.address.region}
+          {order.address.postalCode ? ` ${order.address.postalCode}` : ''}
           <br />
           {order.address.country}
         </address>
@@ -409,18 +409,22 @@ function OrderDetail({ order }: { order: Order }) {
               {formatPrice(order.subtotal)}
             </dd>
           </div>
-          <div className="flex items-center justify-between">
-            <dt className="text-ink-500">Shipping</dt>
-            <dd className="font-medium text-ink-900">
-              {order.shipping === 0 ? 'Free' : formatPrice(order.shipping)}
-            </dd>
-          </div>
-          <div className="flex items-center justify-between">
-            <dt className="text-ink-500">Tax</dt>
-            <dd className="font-medium text-ink-900">
-              {formatPrice(order.tax)}
-            </dd>
-          </div>
+          {order.shipping > 0 && (
+            <div className="flex items-center justify-between">
+              <dt className="text-ink-500">Shipping</dt>
+              <dd className="font-medium text-ink-900">
+                {formatPrice(order.shipping)}
+              </dd>
+            </div>
+          )}
+          {order.tax > 0 && (
+            <div className="flex items-center justify-between">
+              <dt className="text-ink-500">Tax</dt>
+              <dd className="font-medium text-ink-900">
+                {formatPrice(order.tax)}
+              </dd>
+            </div>
+          )}
           <div className="border-t border-ink-100 pt-2">
             <div className="flex items-center justify-between">
               <dt className="text-base font-semibold text-ink-900">Total</dt>

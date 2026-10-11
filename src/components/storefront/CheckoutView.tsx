@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useCart } from '@/context/CartContext'
 import { useToast } from '@/context/ToastContext'
 import { formatPrice } from '@/lib/format'
-import { calcOrderTotals, FREE_SHIPPING_THRESHOLD } from '@/lib/pricing'
+import { calcOrderTotals } from '@/lib/pricing'
 import { COUNTRIES } from '@/data/countries'
 import { Button } from '@/components/ui/Button'
 import { Input, Select, Textarea } from '@/components/ui/Input'
@@ -20,7 +20,6 @@ interface FormState {
   line2: string
   city: string
   region: string
-  postalCode: string
   country: string
   notes: string
 }
@@ -33,7 +32,6 @@ const initialState: FormState = {
   line2: '',
   city: '',
   region: '',
-  postalCode: '',
   country: 'United States',
   notes: '',
 }
@@ -78,7 +76,6 @@ export function CheckoutView() {
     if (!form.line1.trim()) e.line1 = 'Enter your street address'
     if (!form.city.trim()) e.city = 'City is required'
     if (!form.region.trim()) e.region = 'State / region is required'
-    if (!form.postalCode.trim()) e.postalCode = 'Postal / ZIP code is required'
     setErrors(e)
     return Object.keys(e).length === 0
   }
@@ -105,7 +102,6 @@ export function CheckoutView() {
             line2: form.line2 || undefined,
             city: form.city,
             region: form.region,
-            postalCode: form.postalCode,
             country: form.country,
           },
           items: items.map((item) => ({
@@ -227,27 +223,20 @@ export function CheckoutView() {
                   error={errors.region}
                   disabled={locked}
                 />
-                <Input
-                  label="Postal / ZIP code"
-                  value={form.postalCode}
-                  onChange={(e) =>
-                    setForm((f) => ({ ...f, postalCode: e.target.value }))
-                  }
-                  error={errors.postalCode}
-                  disabled={locked}
-                />
-                <Select
-                  label="Country"
-                  value={form.country}
-                  onChange={(e) => setForm((f) => ({ ...f, country: e.target.value }))}
-                  disabled={locked}
-                >
-                  {COUNTRIES.map((country) => (
-                    <option key={country.code} value={country.name}>
-                      {country.name}
-                    </option>
-                  ))}
-                </Select>
+                <div className="sm:col-span-2">
+                  <Select
+                    label="Country"
+                    value={form.country}
+                    onChange={(e) => setForm((f) => ({ ...f, country: e.target.value }))}
+                    disabled={locked}
+                  >
+                    {COUNTRIES.map((country) => (
+                      <option key={country.code} value={country.name}>
+                        {country.name}
+                      </option>
+                    ))}
+                  </Select>
+                </div>
               </div>
             </section>
 
@@ -285,7 +274,6 @@ export function CheckoutView() {
                     line2: form.line2 || undefined,
                     city: form.city,
                     region: form.region,
-                    postalCode: form.postalCode,
                     country: form.country,
                   }}
                 />
@@ -343,16 +331,20 @@ export function CheckoutView() {
                   {formatPrice(subtotal)}
                 </dd>
               </div>
-              <div className="flex items-center justify-between">
-                <dt className="text-ink-500">Shipping</dt>
-                <dd className="font-medium text-ink-900">
-                  {shipping === 0 ? 'Free' : formatPrice(shipping)}
-                </dd>
-              </div>
-              <div className="flex items-center justify-between">
-                <dt className="text-ink-500">Estimated tax</dt>
-                <dd className="font-medium text-ink-900">{formatPrice(tax)}</dd>
-              </div>
+              {shipping > 0 && (
+                <div className="flex items-center justify-between">
+                  <dt className="text-ink-500">Shipping</dt>
+                  <dd className="font-medium text-ink-900">
+                    {formatPrice(shipping)}
+                  </dd>
+                </div>
+              )}
+              {tax > 0 && (
+                <div className="flex items-center justify-between">
+                  <dt className="text-ink-500">Estimated tax</dt>
+                  <dd className="font-medium text-ink-900">{formatPrice(tax)}</dd>
+                </div>
+              )}
               <div className="border-t border-ink-100 pt-3">
                 <div className="flex items-center justify-between">
                   <dt className="text-base font-semibold text-ink-900">Total</dt>
@@ -365,7 +357,7 @@ export function CheckoutView() {
             <ul className="mt-5 space-y-2 text-xs text-ink-500">
               <li className="flex items-center gap-2">
                 <IconTruck width={14} height={14} />
-                Free shipping on orders over {formatPrice(FREE_SHIPPING_THRESHOLD)}
+                Free shipping on all orders
               </li>
               <li className="flex items-center gap-2">
                 <IconShield width={14} height={14} />

@@ -1,6 +1,4 @@
 import { ContentPage } from '@/components/storefront/ContentPage'
-import { formatPrice } from '@/lib/format'
-import { FLAT_SHIPPING, FREE_SHIPPING_THRESHOLD } from '@/lib/pricing'
 
 export default function Page() {
   return (
@@ -9,8 +7,7 @@ export default function Page() {
       lede="We ship worldwide from a single studio, with tracking on every order."
     >
       <p>
-        Standard shipping is {formatPrice(FLAT_SHIPPING)}. Orders of{' '}
-        {formatPrice(FREE_SHIPPING_THRESHOLD)} or more ship free.
+        Free tracked shipping is included on all orders worldwide.
       </p>
       <p>
         Paid orders leave within 1–2 business days. International delivery

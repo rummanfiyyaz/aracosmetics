@@ -55,7 +55,7 @@ export async function POST(request: Request) {
           line2: order.address.line2,
           city: order.address.city,
           state: order.address.region,
-          postal_code: order.address.postalCode,
+          postal_code: order.address.postalCode || undefined,
           country: countryCode(order.address.country),
         },
       },

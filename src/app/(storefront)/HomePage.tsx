@@ -18,7 +18,6 @@ import {
   IconTruck,
 } from '@/components/icons'
 import { formatPrice } from '@/lib/format'
-import { FREE_SHIPPING_THRESHOLD } from '@/lib/pricing'
 
 function formatCount(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n % 1_000_000 === 0 ? 0 : 1)}M`
@@ -49,8 +48,8 @@ export async function HomePage() {
           <Stat label="Products" value={`${productCount}${productCount > 0 ? '+' : ''}`} />
           <Stat label="Happy customers" value={formatCount(customerCount)} />
           <Stat
-            label="Free shipping"
-            value={`${formatPrice(FREE_SHIPPING_THRESHOLD)}+`}
+            label="Shipping"
+            value="100% Free"
           />
           <Stat label="Delivery" value="Worldwide" />
         </div>
@@ -148,7 +147,7 @@ export async function HomePage() {
             <Benefit
               icon={<IconTruck />}
               title="Worldwide shipping"
-              body={`Free tracked shipping over ${formatPrice(FREE_SHIPPING_THRESHOLD)}.`}
+              body="Free tracked shipping on all orders."
             />
             <Benefit
               icon={<IconGift />}

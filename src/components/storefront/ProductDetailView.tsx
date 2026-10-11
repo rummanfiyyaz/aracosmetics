@@ -252,7 +252,7 @@ export function ProductDetailView({
             <ul className="mt-6 grid gap-3 rounded-2xl border border-ink-100 bg-ink-50/40 p-4 text-sm text-ink-700">
               <li className="flex items-center gap-2">
                 <IconTruck width={16} height={16} className="text-ink-500" />
-                Free worldwide shipping over $75
+                Free worldwide shipping
               </li>
               <li className="flex items-center gap-2">
                 <IconShield width={16} height={16} className="text-ink-500" />
@@ -321,7 +321,7 @@ export function ProductDetailView({
               <div className="space-y-3">
                 <p>
                   Orders placed before 2pm local time ship the same business
-                  day. Free shipping is included on orders over $75.
+                  day. Free shipping is included on all orders.
                 </p>
                 <p>
                   Standard international delivery takes 5–10 business days.

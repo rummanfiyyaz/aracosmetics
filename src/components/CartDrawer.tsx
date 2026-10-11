@@ -156,7 +156,7 @@ export function CartDrawer() {
                 </span>
               </div>
               <p className="text-xs text-ink-500">
-                Shipping and taxes calculated at checkout.
+                Free shipping · Taxes included
               </p>
               <div className="grid gap-2">
                 <Link href="/cart" onClick={closeCart} className="block">

@@ -25,7 +25,6 @@ export function validateCheckoutPayload(
     !body.address?.line1?.trim() ||
     !body.address?.city?.trim() ||
     !body.address?.region?.trim() ||
-    !body.address?.postalCode?.trim() ||
     !body.address?.country?.trim()
   ) {
     return 'Shipping address is incomplete'

@@ -40,7 +40,6 @@ export async function POST(request: Request) {
     !body.address?.line1?.trim() ||
     !body.address?.city?.trim() ||
     !body.address?.region?.trim() ||
-    !body.address?.postalCode?.trim() ||
     !body.address?.country?.trim()
   )
     return NextResponse.json({ error: 'Shipping address is incomplete' }, { status: 400 })

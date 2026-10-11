@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useCart } from '@/context/CartContext'
 import { useToast } from '@/context/ToastContext'
 import { formatPrice } from '@/lib/format'
-import { calcOrderTotals, FREE_SHIPPING_THRESHOLD } from '@/lib/pricing'
+import { calcOrderTotals } from '@/lib/pricing'
 import { Button } from '@/components/ui/Button'
 import {
   IconCart,
@@ -179,16 +179,20 @@ export function CartView() {
                   {formatPrice(subtotal)}
                 </dd>
               </div>
-              <div className="flex items-center justify-between">
-                <dt className="text-ink-500">Shipping</dt>
-                <dd className="font-medium text-ink-900">
-                  {shipping === 0 ? 'Free' : formatPrice(shipping)}
-                </dd>
-              </div>
-              <div className="flex items-center justify-between">
-                <dt className="text-ink-500">Estimated tax</dt>
-                <dd className="font-medium text-ink-900">{formatPrice(tax)}</dd>
-              </div>
+              {shipping > 0 && (
+                <div className="flex items-center justify-between">
+                  <dt className="text-ink-500">Shipping</dt>
+                  <dd className="font-medium text-ink-900">
+                    {formatPrice(shipping)}
+                  </dd>
+                </div>
+              )}
+              {tax > 0 && (
+                <div className="flex items-center justify-between">
+                  <dt className="text-ink-500">Estimated tax</dt>
+                  <dd className="font-medium text-ink-900">{formatPrice(tax)}</dd>
+                </div>
+              )}
               <div className="border-t border-ink-100 pt-3">
                 <div className="flex items-center justify-between">
                   <dt className="text-base font-semibold text-ink-900">Total</dt>
@@ -209,7 +213,7 @@ export function CartView() {
             <ul className="mt-5 space-y-2 text-xs text-ink-500">
               <li className="flex items-center gap-2">
                 <IconTruck width={14} height={14} />
-                Free shipping on orders over {formatPrice(FREE_SHIPPING_THRESHOLD)}
+                Free shipping on all orders
               </li>
               <li className="flex items-center gap-2">
                 <IconShield width={14} height={14} />

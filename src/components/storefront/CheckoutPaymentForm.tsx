@@ -60,7 +60,7 @@ export function CheckoutPaymentForm({
     line2?: string
     city: string
     region: string
-    postalCode: string
+    postalCode?: string
     country: string
   }
 }) {
@@ -93,7 +93,7 @@ export function CheckoutPaymentForm({
               line2: address.line2 || undefined,
               city: address.city,
               state: address.region,
-              postal_code: address.postalCode,
+              postal_code: address.postalCode || undefined,
               country: countryCode(address.country),
             },
           },

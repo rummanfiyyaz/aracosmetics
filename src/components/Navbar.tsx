@@ -61,7 +61,7 @@ export function Navbar({
     <>
       <div className="bg-ink-900 text-white">
         <div className="container-page flex flex-col items-center justify-center gap-0.5 py-2 text-center text-[11px] sm:flex-row sm:gap-3 sm:text-xs">
-          <span>Free shipping on orders over $75</span>
+          <span>Free shipping on all orders</span>
           <span className="hidden text-ink-400 sm:inline" aria-hidden>
             ·
           </span>
