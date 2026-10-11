@@ -1,0 +1,1661 @@
+{
+  "products": [
+    {
+      "name": "New watch",
+      "slug": "new-watch",
+      "category": "watches",
+      "price": 5,
+      "rating": 0,
+      "reviewCount": 0,
+      "images": [
+        "https://www.google.com/imgres?q=watch&imgurl=https%3A%2F%2Fdanytech.com.pk%2Fcdn%2Fshop%2Ffiles%2Faudionic-the-sound-master-desert-khaki-golden-dany-d-force-smart-watch-36389533647004_copy.png%3Fv%3D1735726375&imgrefurl=https%3A%2F%2Fdanytech.com.pk%2Fproducts%2Fd-force-smart-watch%3Fsrsltid%3DAfmBOopzxbzQuqM55D09I8YPmX3aaaVbimW_rl8korZCBFTRAsJ7h8Hk&docid=fbXHhA0tu5gNhM&tbnid=lr1-qAnMC-DrOM&vet=12ahUKEwit-5iHoqmWAxWKgf0HHXsVDCQQnPAOegQIMRAA..i&w=1080&h=1080&hcb=2&ved=2ahUKEwit-5iHoqmWAxWKgf0HHXsVDCQQnPAOegQIMRAA",
+        "https://www.google.com/imgres?q=watch&imgurl=https%3A%2F%2Frafiqsonsonline.com%2F_next%2Fimage%3Furl%3Dhttps%253A%252F%252Fcdn.shopify.com%252Fs%252Ffiles%252F1%252F0795%252F6879%252F7935%252Ffiles%252F72565_1271-blk.webp%253Fv%253D1771249095%26w%3D1920%26q%3D75&imgrefurl=https%3A%2F%2Frafiqsonsonline.com%2Fproduct-category%2Fmens-watch%3Fsrsltid%3DAfmBOoq39USx9d302CDnIdUCO09U8O0ei3WQNYM8GvzyWHhBNN0RAcfT&docid=yPXYsPir_p4XcM&tbnid=xBT_RKnyeKvrCM&vet=12ahUKEwit-5iHoqmWAxWKgf0HHXsVDCQQnPAOegQIchAA..i&w=1000&h=1000&hcb=2&ved=2ahUKEwit-5iHoqmWAxWKgf0HHXsVDCQQnPAOegQIchAA",
+        "https://www.google.com/imgres?q=watch&imgurl=https%3A%2F%2Fimg.jaeger-lecoultre.com%2Fpush-card-m-3%2F6853972def5f873955c6741725890a30930574dd.jpg&imgrefurl=https%3A%2F%2Fwww.jaeger-lecoultre.com%2Fus-en%2Fwatches%2Fmen-watches&docid=sCXm1tQOqPYrCM&tbnid=9sTqgAFuuX-lVM&vet=12ahUKEwit-5iHoqmWAxWKgf0HHXsVDCQQnPAOegUIrQIQAA..i&w=260&h=325&hcb=2&itg=1&ved=2ahUKEwit-5iHoqmWAxWKgf0HHXsVDCQQnPAOegUIrQIQAA"
+      ],
+      "shortDescription": "black modern",
+      "description": "black modern",
+      "features": [],
+      "specifications": {},
+      "stock": 5,
+      "sku": "WB_AURO",
+      "status": "active",
+      "featured": false,
+      "reviews": [],
+      "id": "custom-waalhr",
+      "createdAt": "2026-08-18T03:47:19.078Z"
+    },
+    {
+      "id": "wb-01",
+      "slug": "aero-500-water-bottle",
+      "name": "Aero 500 Water Bottle",
+      "category": "water-bottles",
+      "price": 24,
+      "discountPrice": 19.5,
+      "rating": 4.7,
+      "reviewCount": 128,
+      "images": [
+        "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=1000&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=1000&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1550505095-81378a674395?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Lightweight double-wall stainless steel bottle, 500 ml, leak-proof lid.",
+      "description": "The Aero 500 is our everyday hydration companion. Double-wall vacuum insulation keeps cold drinks cold for up to 24 hours and warm drinks warm for up to 12. The powder-coated exterior resists scratches and the wide mouth fits ice cubes and cleaning brushes.",
+      "features": [
+        "24 hr cold / 12 hr hot",
+        "BPA-free, food-grade stainless steel",
+        "Leak-proof twist lid",
+        "Fits most car cup holders"
+      ],
+      "specifications": {
+        "Capacity": "500 ml",
+        "Material": "18/8 Stainless Steel",
+        "Weight": "280 g",
+        "Dimensions": "7 × 7 × 22 cm"
+      },
+      "variants": [
+        {
+          "id": "matte-black",
+          "label": "Matte Black",
+          "swatch": "#1a1a1a"
+        },
+        {
+          "id": "sage",
+          "label": "Sage",
+          "swatch": "#a8c3a0"
+        },
+        {
+          "id": "sand",
+          "label": "Sand",
+          "swatch": "#e0cba0"
+        }
+      ],
+      "stock": 42,
+      "sku": "WB-AERO-500",
+      "status": "active",
+      "featured": true,
+      "createdAt": "2026-07-14",
+      "reviews": [
+        {
+          "id": "wb-01-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "wb-01-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "wb-01-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "wb-02",
+      "slug": "trail-750-sport-bottle",
+      "name": "Trail 750 Sport Bottle",
+      "category": "water-bottles",
+      "price": 29,
+      "rating": 4.6,
+      "reviewCount": 84,
+      "images": [
+        "https://images.unsplash.com/photo-1610631787813-9eeb2b41f4de?w=1000&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "One-handed sport cap, 750 ml, grip texture — built for movement.",
+      "description": "Trail 750 is our go-to for the gym, the trail and the daily commute. A silicone sleeve gives you a sure grip and the one-handed sport cap opens with a click.",
+      "features": [
+        "One-handed sport cap",
+        "Silicone grip sleeve",
+        "Fits bike cages"
+      ],
+      "specifications": {
+        "Capacity": "750 ml",
+        "Material": "Tritan + Silicone",
+        "Weight": "210 g"
+      },
+      "variants": [
+        {
+          "id": "ocean",
+          "label": "Ocean",
+          "swatch": "#2e6db7"
+        },
+        {
+          "id": "coral",
+          "label": "Coral",
+          "swatch": "#e07a5f"
+        }
+      ],
+      "stock": 12,
+      "sku": "WB-TRAIL-750",
+      "status": "active",
+      "featured": false,
+      "createdAt": "2026-06-22",
+      "reviews": [
+        {
+          "id": "wb-02-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "wb-02-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "wb-02-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "wb-03",
+      "slug": "glass-classic-bottle",
+      "name": "Glass Classic Bottle",
+      "category": "water-bottles",
+      "price": 18,
+      "rating": 4.4,
+      "reviewCount": 46,
+      "images": [
+        "https://images.unsplash.com/photo-1590502593747-42a996133562?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Borosilicate glass, bamboo cap, 600 ml.",
+      "description": "A pure taste every time. Borosilicate glass with a natural bamboo cap and protective silicone sleeve.",
+      "features": [
+        "Borosilicate glass",
+        "Bamboo cap",
+        "Silicone drop-guard"
+      ],
+      "specifications": {
+        "Capacity": "600 ml",
+        "Material": "Borosilicate + Bamboo"
+      },
+      "stock": 0,
+      "sku": "WB-GLASS-600",
+      "status": "active",
+      "createdAt": "2026-04-10",
+      "reviews": [
+        {
+          "id": "wb-03-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "wb-03-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "wb-03-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "wb-04",
+      "slug": "kids-fun-bottle",
+      "name": "Kids Fun Bottle",
+      "category": "water-bottles",
+      "price": 14,
+      "discountPrice": 11.9,
+      "rating": 4.8,
+      "reviewCount": 210,
+      "images": [
+        "https://images.unsplash.com/photo-1625708458528-802ec79b1ed8?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Playful colors, straw lid, 400 ml — perfect for lunchboxes.",
+      "description": "Bright, tough and dishwasher safe. Made to survive school.",
+      "features": [
+        "Straw lid",
+        "Dishwasher safe",
+        "Drop-tested"
+      ],
+      "specifications": {
+        "Capacity": "400 ml",
+        "Material": "Tritan"
+      },
+      "stock": 78,
+      "sku": "WB-KIDS-400",
+      "status": "active",
+      "createdAt": "2026-07-01",
+      "reviews": [
+        {
+          "id": "wb-04-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "wb-04-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "wb-04-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "wb-05",
+      "slug": "urban-slim-1l",
+      "name": "Urban Slim 1L",
+      "category": "water-bottles",
+      "price": 32,
+      "rating": 4.5,
+      "reviewCount": 63,
+      "images": [
+        "https://images.unsplash.com/photo-1560343776-97e7d202ff0e?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Slim 1L that fits in a laptop sleeve.",
+      "description": "A larger capacity that still slides into a bag pocket.",
+      "features": [
+        "Fits laptop bags",
+        "Screw lid",
+        "1L capacity"
+      ],
+      "specifications": {
+        "Capacity": "1 L",
+        "Material": "Stainless Steel"
+      },
+      "stock": 21,
+      "sku": "WB-URBAN-1L",
+      "status": "active",
+      "featured": true,
+      "createdAt": "2026-08-01",
+      "reviews": [
+        {
+          "id": "wb-05-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "wb-05-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "wb-05-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "wb-06",
+      "slug": "infuser-fruit-bottle",
+      "name": "Infuser Fruit Bottle",
+      "category": "water-bottles",
+      "price": 22,
+      "rating": 4.3,
+      "reviewCount": 38,
+      "images": [
+        "https://images.unsplash.com/photo-1550505095-81378a674395?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Built-in infuser basket for fruits and herbs.",
+      "description": "Drop in cucumber, mint or berries — hydration with flavor.",
+      "features": [
+        "Fruit infuser basket",
+        "700 ml",
+        "BPA-free"
+      ],
+      "specifications": {
+        "Capacity": "700 ml"
+      },
+      "stock": 34,
+      "sku": "WB-INFUSER-700",
+      "status": "active",
+      "createdAt": "2026-03-19",
+      "reviews": [
+        {
+          "id": "wb-06-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "wb-06-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "wb-06-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "tb-01",
+      "slug": "thermo-pro-500",
+      "name": "ThermoPro 500",
+      "category": "thermos-bottles",
+      "price": 39,
+      "discountPrice": 32,
+      "rating": 4.8,
+      "reviewCount": 156,
+      "images": [
+        "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?w=1000&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1544441893-675973e31985?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Premium vacuum flask, 500 ml, 24 hr hot / 36 hr cold.",
+      "description": "Our flagship thermos flask. Triple-layer vacuum insulation and a copper-lined interior for extreme temperature retention.",
+      "features": [
+        "24 hr hot / 36 hr cold",
+        "Copper-lined interior",
+        "Twist-lock lid doubles as cup"
+      ],
+      "specifications": {
+        "Capacity": "500 ml",
+        "Material": "18/8 Stainless Steel",
+        "Weight": "340 g"
+      },
+      "variants": [
+        {
+          "id": "graphite",
+          "label": "Graphite",
+          "swatch": "#3a3a44"
+        },
+        {
+          "id": "olive",
+          "label": "Olive",
+          "swatch": "#6b7a3a"
+        }
+      ],
+      "stock": 22,
+      "sku": "TB-PRO-500",
+      "status": "active",
+      "featured": true,
+      "createdAt": "2026-07-08",
+      "reviews": [
+        {
+          "id": "tb-01-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "tb-01-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "tb-01-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "tb-02",
+      "slug": "travel-mug-350",
+      "name": "Travel Mug 350",
+      "category": "thermos-bottles",
+      "price": 26,
+      "rating": 4.6,
+      "reviewCount": 91,
+      "images": [
+        "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Slim insulated coffee mug with sip lid, 350 ml.",
+      "description": "A morning coffee companion designed to fit in your hand and cup holder.",
+      "features": [
+        "Sip-through lid",
+        "Slim body",
+        "Fits cup holders"
+      ],
+      "specifications": {
+        "Capacity": "350 ml"
+      },
+      "stock": 55,
+      "sku": "TB-MUG-350",
+      "status": "active",
+      "createdAt": "2026-06-05",
+      "reviews": [
+        {
+          "id": "tb-02-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "tb-02-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "tb-02-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "tb-03",
+      "slug": "family-liter-1l",
+      "name": "Family 1L Thermos",
+      "category": "thermos-bottles",
+      "price": 45,
+      "discountPrice": 39,
+      "rating": 4.7,
+      "reviewCount": 74,
+      "images": [
+        "https://images.unsplash.com/photo-1615486511262-c0e33fcc4b78?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "1L capacity for picnics, road trips and long days.",
+      "description": "Enough for the whole family. Ergonomic handle and pour-safe cap.",
+      "features": [
+        "1 L capacity",
+        "Pour-safe cap",
+        "Ergonomic handle"
+      ],
+      "specifications": {
+        "Capacity": "1 L"
+      },
+      "stock": 8,
+      "sku": "TB-FAM-1L",
+      "status": "active",
+      "featured": true,
+      "createdAt": "2026-05-12",
+      "reviews": [
+        {
+          "id": "tb-03-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "tb-03-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "tb-03-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "tb-04",
+      "slug": "compact-tea-thermos",
+      "name": "Compact Tea Thermos",
+      "category": "thermos-bottles",
+      "price": 22,
+      "rating": 4.4,
+      "reviewCount": 41,
+      "images": [
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Built-in tea strainer, 300 ml — perfect for loose leaf.",
+      "description": "Steep and sip on the go with our built-in fine mesh strainer.",
+      "features": [
+        "Removable strainer",
+        "300 ml",
+        "Cup-sized"
+      ],
+      "specifications": {
+        "Capacity": "300 ml"
+      },
+      "stock": 27,
+      "sku": "TB-TEA-300",
+      "status": "active",
+      "createdAt": "2026-02-11",
+      "reviews": [
+        {
+          "id": "tb-04-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "tb-04-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "tb-04-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "tb-05",
+      "slug": "outdoor-750-thermos",
+      "name": "Outdoor 750 Thermos",
+      "category": "thermos-bottles",
+      "price": 34,
+      "rating": 4.5,
+      "reviewCount": 58,
+      "images": [
+        "https://images.unsplash.com/photo-1560788784-c98e7b31c73f?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Rugged powder finish, 750 ml, carabiner clip.",
+      "description": "Built for hikes and camp mornings.",
+      "features": [
+        "Powder finish",
+        "Carabiner clip",
+        "Impact-tested"
+      ],
+      "specifications": {
+        "Capacity": "750 ml"
+      },
+      "stock": 15,
+      "sku": "TB-OUT-750",
+      "status": "active",
+      "createdAt": "2026-04-04",
+      "reviews": [
+        {
+          "id": "tb-05-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "tb-05-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "tb-05-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "ef-01",
+      "slug": "glow-photo-frame-10in",
+      "name": "Glow Photo Frame 10\"",
+      "category": "electric-frames",
+      "price": 79,
+      "discountPrice": 64,
+      "rating": 4.6,
+      "reviewCount": 62,
+      "images": [
+        "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1000&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Wi-Fi photo frame with warm LED backlight, 10-inch IPS.",
+      "description": "Send photos from anywhere — your Glow frame receives them instantly and rotates automatically.",
+      "features": [
+        "Wi-Fi photo sync",
+        "Warm LED backlight",
+        "Auto-rotate landscape/portrait",
+        "10-inch IPS panel"
+      ],
+      "specifications": {
+        "Screen": "10.1\" IPS",
+        "Resolution": "1280 × 800",
+        "Storage": "16 GB"
+      },
+      "variants": [
+        {
+          "id": "oak",
+          "label": "Oak Frame",
+          "swatch": "#c7a677"
+        },
+        {
+          "id": "black",
+          "label": "Matte Black",
+          "swatch": "#111"
+        }
+      ],
+      "stock": 18,
+      "sku": "EF-GLOW-10",
+      "status": "active",
+      "featured": true,
+      "createdAt": "2026-07-25",
+      "reviews": [
+        {
+          "id": "ef-01-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "ef-01-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "ef-01-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "ef-02",
+      "slug": "aurora-ambient-light-frame",
+      "name": "Aurora Ambient Light Frame",
+      "category": "electric-frames",
+      "price": 129,
+      "rating": 4.8,
+      "reviewCount": 48,
+      "images": [
+        "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Programmable ambient light art with 16M colors.",
+      "description": "A statement piece for your living room, controllable from your phone.",
+      "features": [
+        "16M colors",
+        "App-controlled",
+        "Ambient light modes"
+      ],
+      "specifications": {
+        "Screen": "LED matrix",
+        "Control": "Wi-Fi + BLE"
+      },
+      "stock": 6,
+      "sku": "EF-AURORA-A1",
+      "status": "active",
+      "featured": true,
+      "createdAt": "2026-06-18",
+      "reviews": [
+        {
+          "id": "ef-02-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "ef-02-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "ef-02-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "ef-03",
+      "slug": "mini-desk-frame-7in",
+      "name": "Mini Desk Frame 7\"",
+      "category": "electric-frames",
+      "price": 54,
+      "rating": 4.3,
+      "reviewCount": 30,
+      "images": [
+        "https://images.unsplash.com/photo-1615986201152-7686a4867f30?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "A compact 7-inch photo frame for your desk.",
+      "description": "Perfect for your workstation. Charges via USB-C.",
+      "features": [
+        "7-inch panel",
+        "USB-C",
+        "SD card supported"
+      ],
+      "specifications": {
+        "Screen": "7\"",
+        "Resolution": "1024 × 600"
+      },
+      "stock": 33,
+      "sku": "EF-DESK-7",
+      "status": "active",
+      "createdAt": "2026-05-01",
+      "reviews": [
+        {
+          "id": "ef-03-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "ef-03-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "ef-03-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "ef-04",
+      "slug": "led-word-frame",
+      "name": "LED Word Frame",
+      "category": "electric-frames",
+      "price": 42,
+      "discountPrice": 34.9,
+      "rating": 4.5,
+      "reviewCount": 22,
+      "images": [
+        "https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Custom text and message LED frame — pick your quote.",
+      "description": "Display a name, a quote or a reminder — configurable up to 24 characters.",
+      "features": [
+        "24 character display",
+        "App configurable",
+        "Warm-white glow"
+      ],
+      "specifications": {
+        "Screen": "LED text",
+        "Chars": "24"
+      },
+      "stock": 20,
+      "sku": "EF-WORD-24",
+      "status": "active",
+      "createdAt": "2026-03-28",
+      "reviews": [
+        {
+          "id": "ef-04-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "ef-04-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "ef-04-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "wt-01",
+      "slug": "minimalist-classic-watch",
+      "name": "Minimalist Classic Watch",
+      "category": "watches",
+      "price": 149,
+      "discountPrice": 119,
+      "rating": 4.9,
+      "reviewCount": 202,
+      "images": [
+        "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=1000&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=1000&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Clean 40mm dial, sapphire glass, quartz movement.",
+      "description": "A watch that goes with everything. A brushed stainless case, sapphire glass and a genuine leather strap.",
+      "features": [
+        "Sapphire crystal",
+        "Japanese quartz movement",
+        "Genuine leather strap",
+        "5 ATM water resistant"
+      ],
+      "specifications": {
+        "Case Size": "40 mm",
+        "Movement": "Quartz",
+        "Strap": "Genuine Leather",
+        "Water Resistance": "5 ATM"
+      },
+      "variants": [
+        {
+          "id": "black-tan",
+          "label": "Black / Tan",
+          "swatch": "#000"
+        },
+        {
+          "id": "silver-brown",
+          "label": "Silver / Brown",
+          "swatch": "#c0c0c0"
+        },
+        {
+          "id": "rose-black",
+          "label": "Rose / Black",
+          "swatch": "#b76e79"
+        }
+      ],
+      "stock": 26,
+      "sku": "WT-MIN-40",
+      "status": "active",
+      "featured": true,
+      "createdAt": "2026-07-20",
+      "reviews": [
+        {
+          "id": "wt-01-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "wt-01-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "wt-01-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "wt-02",
+      "slug": "chronograph-sport-watch",
+      "name": "Chronograph Sport Watch",
+      "category": "watches",
+      "price": 219,
+      "rating": 4.7,
+      "reviewCount": 111,
+      "images": [
+        "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "43mm chronograph, silicone strap, 10 ATM.",
+      "description": "Built for movement — sub dials, tachymeter and a rugged bezel.",
+      "features": [
+        "Chronograph",
+        "Tachymeter",
+        "10 ATM",
+        "Silicone strap"
+      ],
+      "specifications": {
+        "Case Size": "43 mm",
+        "Water Resistance": "10 ATM"
+      },
+      "stock": 9,
+      "sku": "WT-CHR-43",
+      "status": "active",
+      "createdAt": "2026-06-30",
+      "reviews": [
+        {
+          "id": "wt-02-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "wt-02-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "wt-02-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "wt-03",
+      "slug": "ladies-slim-gold-watch",
+      "name": "Ladies Slim Gold Watch",
+      "category": "watches",
+      "price": 179,
+      "discountPrice": 149,
+      "rating": 4.8,
+      "reviewCount": 87,
+      "images": [
+        "https://images.unsplash.com/photo-1548171245-b04e0f8b9c66?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Elegant 32mm gold-tone dial with mesh strap.",
+      "description": "Delicate but confident — a versatile piece for everyday and evening.",
+      "features": [
+        "32mm gold-tone case",
+        "Mesh strap",
+        "Sapphire crystal"
+      ],
+      "specifications": {
+        "Case Size": "32 mm",
+        "Strap": "Steel Mesh"
+      },
+      "stock": 14,
+      "sku": "WT-LDS-32",
+      "status": "active",
+      "featured": true,
+      "createdAt": "2026-05-15",
+      "reviews": [
+        {
+          "id": "wt-03-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "wt-03-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "wt-03-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "wt-04",
+      "slug": "digital-hybrid-smart-watch",
+      "name": "Digital Hybrid Smart Watch",
+      "category": "watches",
+      "price": 199,
+      "rating": 4.5,
+      "reviewCount": 66,
+      "images": [
+        "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Analog hands with a hidden OLED strip for notifications.",
+      "description": "Get the elegance of an analog watch with a touch of smart function.",
+      "features": [
+        "Hidden OLED",
+        "Step tracking",
+        "Notifications"
+      ],
+      "specifications": {
+        "Case Size": "42 mm",
+        "Battery": "14 days"
+      },
+      "stock": 0,
+      "sku": "WT-HYB-42",
+      "status": "active",
+      "createdAt": "2026-04-08",
+      "reviews": [
+        {
+          "id": "wt-04-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "wt-04-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "wt-04-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "wt-05",
+      "slug": "pilot-38-watch",
+      "name": "Pilot 38 Watch",
+      "category": "watches",
+      "price": 169,
+      "rating": 4.6,
+      "reviewCount": 44,
+      "images": [
+        "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Field-style dial, canvas strap, 38mm.",
+      "description": "A rugged everyday piece with a heritage look.",
+      "features": [
+        "Canvas strap",
+        "Lumed dial",
+        "5 ATM"
+      ],
+      "specifications": {
+        "Case Size": "38 mm"
+      },
+      "stock": 17,
+      "sku": "WT-PLT-38",
+      "status": "active",
+      "createdAt": "2026-03-25",
+      "reviews": [
+        {
+          "id": "wt-05-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "wt-05-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "wt-05-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "hb-01",
+      "slug": "aria-shoulder-bag",
+      "name": "Aria Shoulder Bag",
+      "category": "ladies-hand-bags",
+      "price": 89,
+      "discountPrice": 69,
+      "rating": 4.7,
+      "reviewCount": 138,
+      "images": [
+        "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=1000&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Structured shoulder bag in soft vegan leather.",
+      "description": "A clean silhouette with a magnetic snap and a fabric-lined interior — fits your phone, cards, keys and a small book.",
+      "features": [
+        "Vegan leather",
+        "Magnetic snap closure",
+        "Interior card slots"
+      ],
+      "specifications": {
+        "Material": "Vegan Leather",
+        "Dimensions": "28 × 20 × 8 cm"
+      },
+      "variants": [
+        {
+          "id": "ivory",
+          "label": "Ivory",
+          "swatch": "#f2ebe0"
+        },
+        {
+          "id": "cocoa",
+          "label": "Cocoa",
+          "swatch": "#5c3a2e"
+        },
+        {
+          "id": "noir",
+          "label": "Noir",
+          "swatch": "#111"
+        }
+      ],
+      "stock": 24,
+      "sku": "HB-ARIA-01",
+      "status": "active",
+      "featured": true,
+      "createdAt": "2026-08-01",
+      "reviews": [
+        {
+          "id": "hb-01-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "hb-01-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "hb-01-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "hb-02",
+      "slug": "city-tote-bag",
+      "name": "City Tote Bag",
+      "category": "ladies-hand-bags",
+      "price": 79,
+      "rating": 4.5,
+      "reviewCount": 92,
+      "images": [
+        "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Roomy tote with laptop sleeve — everyday essential.",
+      "description": "A tote that transitions from office to weekend without missing a beat.",
+      "features": [
+        "Fits 13\" laptop",
+        "Interior zip pocket",
+        "Water-resistant lining"
+      ],
+      "specifications": {
+        "Material": "Canvas + Leather",
+        "Fits": "Up to 13\""
+      },
+      "stock": 31,
+      "sku": "HB-CITY-01",
+      "status": "active",
+      "createdAt": "2026-07-04",
+      "reviews": [
+        {
+          "id": "hb-02-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "hb-02-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "hb-02-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "hb-03",
+      "slug": "noir-mini-clutch",
+      "name": "Noir Mini Clutch",
+      "category": "ladies-hand-bags",
+      "price": 59,
+      "discountPrice": 44,
+      "rating": 4.6,
+      "reviewCount": 51,
+      "images": [
+        "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Sleek clutch for evenings out.",
+      "description": "A refined evening piece with a fine chain and clean lines.",
+      "features": [
+        "Detachable chain",
+        "Magnetic closure",
+        "Card slots inside"
+      ],
+      "specifications": {
+        "Material": "PU Leather"
+      },
+      "stock": 4,
+      "sku": "HB-NOIR-01",
+      "status": "active",
+      "createdAt": "2026-06-11",
+      "reviews": [
+        {
+          "id": "hb-03-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "hb-03-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "hb-03-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "hb-04",
+      "slug": "weekender-bag",
+      "name": "Weekender Bag",
+      "category": "ladies-hand-bags",
+      "price": 129,
+      "rating": 4.8,
+      "reviewCount": 76,
+      "images": [
+        "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Overnight-ready duffle in soft leather.",
+      "description": "Two nights, one bag. Fits changes of clothes and a laptop.",
+      "features": [
+        "Removable strap",
+        "Interior compartments",
+        "Full-zip closure"
+      ],
+      "specifications": {
+        "Material": "Leather blend",
+        "Dimensions": "46 × 24 × 22 cm"
+      },
+      "stock": 11,
+      "sku": "HB-WKND-01",
+      "status": "active",
+      "featured": true,
+      "createdAt": "2026-05-20",
+      "reviews": [
+        {
+          "id": "hb-04-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "hb-04-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "hb-04-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    },
+    {
+      "id": "hb-05",
+      "slug": "crescent-crossbody",
+      "name": "Crescent Crossbody",
+      "category": "ladies-hand-bags",
+      "price": 69,
+      "rating": 4.4,
+      "reviewCount": 34,
+      "images": [
+        "https://images.unsplash.com/photo-1566150902887-9679ecc155ba?w=1000&auto=format&fit=crop&q=80"
+      ],
+      "shortDescription": "Adjustable strap and a curved silhouette.",
+      "description": "Modern crescent shape that sits neatly against you.",
+      "features": [
+        "Adjustable strap",
+        "Zip top"
+      ],
+      "specifications": {
+        "Material": "Vegan Leather"
+      },
+      "stock": 19,
+      "sku": "HB-CRES-01",
+      "status": "active",
+      "createdAt": "2026-04-02",
+      "reviews": [
+        {
+          "id": "hb-05-r1",
+          "author": "Ayesha K.",
+          "rating": 5,
+          "title": "Absolutely love it",
+          "body": "Exactly what I was looking for. Quality feels premium, packaging was neat and delivery was quick.",
+          "date": "2026-06-14"
+        },
+        {
+          "id": "hb-05-r2",
+          "author": "Daniel P.",
+          "rating": 4,
+          "title": "Great value",
+          "body": "Works as advertised. Would love to see a couple more color options but the current one looks clean.",
+          "date": "2026-05-30"
+        },
+        {
+          "id": "hb-05-r3",
+          "author": "Meera S.",
+          "rating": 5,
+          "title": "Second time buying",
+          "body": "Bought one for myself and now getting another as a gift. Highly recommend HomieShops for quality.",
+          "date": "2026-05-02"
+        }
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "customer": "Test Customer",
+      "email": "test@example.com",
+      "phone": "+1 555 0100",
+      "items": [
+        {
+          "productId": "wt-01",
+          "slug": "minimalist-classic-watch",
+          "name": "Minimalist Classic Watch",
+          "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=1000&auto=format&fit=crop&q=80",
+          "variant": "Silver / Brown",
+          "price": 119,
+          "quantity": 1
+        },
+        {
+          "productId": "wb-01",
+          "slug": "aero-500-water-bottle",
+          "name": "Aero 500 Water Bottle",
+          "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=1000&auto=format&fit=crop&q=80",
+          "variant": "Sage",
+          "price": 19.5,
+          "quantity": 2
+        }
+      ],
+      "itemCount": 3,
+      "subtotal": 158,
+      "shipping": 0,
+      "tax": 12.64,
+      "total": 170.64,
+      "address": {
+        "line1": "1 Test St",
+        "city": "Testville",
+        "region": "CA",
+        "postalCode": "90001",
+        "country": "United States"
+      },
+      "notes": "Please leave at the door",
+      "id": "HS-10242",
+      "status": "processing",
+      "date": "2026-08-15"
+    },
+    {
+      "id": "HS-10241",
+      "customer": "Alicia Reyes",
+      "email": "alicia.r@example.com",
+      "phone": "+1 415 555 0128",
+      "items": [
+        {
+          "productId": "wt-01",
+          "slug": "minimalist-classic-watch",
+          "name": "Minimalist Classic Watch",
+          "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&auto=format&fit=crop&q=80",
+          "variant": "Silver / Brown",
+          "price": 119,
+          "quantity": 1
+        },
+        {
+          "productId": "wb-01",
+          "slug": "aero-500-water-bottle",
+          "name": "Aero 500 Water Bottle",
+          "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&auto=format&fit=crop&q=80",
+          "variant": "Matte Black",
+          "price": 19.5,
+          "quantity": 1
+        }
+      ],
+      "itemCount": 2,
+      "subtotal": 138.5,
+      "shipping": 0,
+      "tax": 11.08,
+      "total": 149.58,
+      "address": {
+        "line1": "2043 Ocean Ave",
+        "city": "San Francisco",
+        "region": "CA",
+        "postalCode": "94112",
+        "country": "United States"
+      },
+      "status": "processing",
+      "date": "2026-08-13"
+    },
+    {
+      "id": "HS-10240",
+      "customer": "Fahad Malik",
+      "email": "fahad@example.com",
+      "items": [
+        {
+          "productId": "tb-01",
+          "slug": "thermo-pro-500",
+          "name": "ThermoPro 500",
+          "image": "https://images.unsplash.com/photo-1610824352934-c10d87b700cc?w=600&auto=format&fit=crop&q=80",
+          "variant": "Graphite",
+          "price": 32,
+          "quantity": 1
+        }
+      ],
+      "itemCount": 1,
+      "subtotal": 32,
+      "shipping": 6.5,
+      "tax": 2.56,
+      "total": 41.06,
+      "address": {
+        "line1": "Flat 3, Gulberg III",
+        "city": "Lahore",
+        "region": "Punjab",
+        "postalCode": "54000",
+        "country": "Pakistan"
+      },
+      "status": "shipped",
+      "date": "2026-08-13"
+    },
+    {
+      "id": "HS-10239",
+      "customer": "Mika Tanaka",
+      "email": "mika.t@example.com",
+      "items": [
+        {
+          "productId": "ef-01",
+          "slug": "glow-photo-frame-10in",
+          "name": "Glow Photo Frame 10\"",
+          "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&auto=format&fit=crop&q=80",
+          "variant": "Oak Frame",
+          "price": 64,
+          "quantity": 1
+        },
+        {
+          "productId": "hb-01",
+          "slug": "aria-shoulder-bag",
+          "name": "Aria Shoulder Bag",
+          "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80",
+          "variant": "Cocoa",
+          "price": 69,
+          "quantity": 1
+        },
+        {
+          "productId": "wt-03",
+          "slug": "ladies-slim-gold-watch",
+          "name": "Ladies Slim Gold Watch",
+          "image": "https://images.unsplash.com/photo-1548171245-b04e0f8b9c66?w=600&auto=format&fit=crop&q=80",
+          "price": 100.5,
+          "quantity": 1
+        }
+      ],
+      "itemCount": 3,
+      "subtotal": 233.5,
+      "shipping": 0,
+      "tax": 18.68,
+      "total": 252.18,
+      "address": {
+        "line1": "4-11-1 Roppongi",
+        "city": "Tokyo",
+        "region": "Minato",
+        "postalCode": "106-0032",
+        "country": "Japan"
+      },
+      "status": "delivered",
+      "date": "2026-08-12"
+    },
+    {
+      "id": "HS-10238",
+      "customer": "Sana Iqbal",
+      "email": "sana@example.com",
+      "items": [
+        {
+          "productId": "wt-01",
+          "slug": "minimalist-classic-watch",
+          "name": "Minimalist Classic Watch",
+          "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&auto=format&fit=crop&q=80",
+          "variant": "Rose / Black",
+          "price": 119,
+          "quantity": 1
+        }
+      ],
+      "itemCount": 1,
+      "subtotal": 119,
+      "shipping": 0,
+      "tax": 9.52,
+      "total": 128.52,
+      "address": {
+        "line1": "Bahria Town Phase 4",
+        "city": "Karachi",
+        "region": "Sindh",
+        "postalCode": "74000",
+        "country": "Pakistan"
+      },
+      "status": "pending",
+      "date": "2026-08-12"
+    }
+  ]
+}
