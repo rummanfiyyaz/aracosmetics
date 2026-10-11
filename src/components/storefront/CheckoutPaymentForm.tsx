@@ -98,6 +98,10 @@ export function CheckoutPaymentForm({
             },
           },
         },
+        return_url:
+          typeof window !== 'undefined'
+            ? `${window.location.origin}/checkout/success`
+            : undefined,
       })
 
     if (confirmError) {
@@ -106,7 +110,10 @@ export function CheckoutPaymentForm({
       return
     }
 
-    if (paymentIntent?.status === 'succeeded') {
+    if (
+      paymentIntent?.status === 'succeeded' ||
+      paymentIntent?.status === 'processing'
+    ) {
       router.push(`/checkout/success?payment_intent=${paymentIntent.id}`)
       return
     }
