@@ -69,10 +69,18 @@ export function CheckoutPaymentForm({
   const router = useRouter()
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  // Billing postal code — customer enters the postal code registered with their card.
+  // This is sent to Stripe for AVS (Address Verification) and is separate from shipping.
+  const [billingPostalCode, setBillingPostalCode] = useState('')
 
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault()
     if (!stripe || !elements) return
+
+    if (!billingPostalCode.trim()) {
+      setError('Please enter the billing postal / ZIP code for your card.')
+      return
+    }
 
     const card = elements.getElement(CardNumberElement)
     if (!card) return
@@ -93,7 +101,7 @@ export function CheckoutPaymentForm({
               line2: address.line2 || undefined,
               city: address.city,
               state: address.region,
-              postal_code: address.postalCode || undefined,
+              postal_code: billingPostalCode.trim(),
               country: countryCode(address.country),
             },
           },
@@ -134,6 +142,22 @@ export function CheckoutPaymentForm({
         <CardField label="CVC">
           <CardCvcElement options={fieldStyle} />
         </CardField>
+      </div>
+      <div>
+        <label className="block">
+          <span className="label">Billing postal / ZIP code</span>
+          <input
+            type="text"
+            value={billingPostalCode}
+            onChange={(e) => setBillingPostalCode(e.target.value)}
+            placeholder="e.g. SW1A 1AA or 10001"
+            autoComplete="billing postal-code"
+            className="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3.5 py-2.5 text-base text-ink-900 placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+          />
+          <p className="mt-1 text-xs text-ink-500">
+            Enter the postal code registered with your card issuer.
+          </p>
+        </label>
       </div>
       {error && (
         <p className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-800">
