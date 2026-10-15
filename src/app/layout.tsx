@@ -33,6 +33,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${display.variable}`}>
+      <head>
+        <script src="https://js.stripe.com/dahlia/stripe.js" async />
+      </head>
       <body>
         <MetaPixel />
         <Providers>{children}</Providers>

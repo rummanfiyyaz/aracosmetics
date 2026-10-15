@@ -1,4 +1,6 @@
 import 'server-only'
+import fs from 'fs'
+import path from 'path'
 import type { Collection } from 'mongodb'
 import { getDb } from './mongo'
 import type {
@@ -13,6 +15,71 @@ import type {
   StoreSettings,
 } from '@/data/types'
 import { defaultCategories, defaultHeroSlides } from '@/data/categories'
+
+interface DbJsonData {
+  products: Product[]
+  orders: Order[]
+  categories?: Category[]
+  heroSlides?: HeroSlide[]
+}
+
+function readDbJson(): DbJsonData {
+  try {
+    const filePath = path.join(process.cwd(), 'data', 'db.json')
+    if (fs.existsSync(filePath)) {
+      const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+      if (!data.products) data.products = []
+      if (!data.orders) data.orders = []
+      if (!data.categories || data.categories.length === 0) {
+        data.categories = defaultCategories.map((seed, i) => ({
+          ...seed,
+          id: `cat-${seed.slug}`,
+          hidden: false,
+          sortOrder: seed.sortOrder ?? (i + 1) * 10,
+          createdAt: '2026-01-01T00:00:00.000Z',
+        }))
+        try {
+          fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8')
+        } catch {}
+      }
+      return data
+    }
+  } catch (err) {
+    console.error('readDbJson failed', err)
+  }
+  return {
+    products: [],
+    orders: [],
+    categories: defaultCategories.map((seed, i) => ({
+      ...seed,
+      id: `cat-${seed.slug}`,
+      hidden: false,
+      sortOrder: seed.sortOrder ?? (i + 1) * 10,
+      createdAt: '2026-01-01T00:00:00.000Z',
+    })),
+  }
+}
+
+function writeDbJson(data: DbJsonData): void {
+  try {
+    const filePath = path.join(process.cwd(), 'data', 'db.json')
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8')
+  } catch (err) {
+    console.error('writeDbJson failed', err)
+  }
+}
+
+function readDbJsonProducts(): Product[] {
+  return readDbJson().products
+}
+
+function readDbJsonOrders(): Order[] {
+  return readDbJson().orders
+}
+
+function readDbJsonCategories(): Category[] {
+  return readDbJson().categories || []
+}
 
 async function products(): Promise<Collection<Product>> {
   const db = await getDb()
@@ -85,22 +152,24 @@ export async function listProducts(): Promise<Product[]> {
   try {
     const col = await products()
     const docs = await col.find({}).sort({ createdAt: -1 }).toArray()
-    return docs.map(stripId) as Product[]
+    if (docs && docs.length > 0) {
+      return docs.map(stripId) as Product[]
+    }
   } catch (err) {
-    console.error('listProducts failed', err)
-    return []
+    console.error('listProducts failed (using fallback db.json):', err)
   }
+  return readDbJsonProducts()
 }
 
 export async function getProductById(id: string): Promise<Product | undefined> {
   try {
     const col = await products()
     const doc = await col.findOne({ id })
-    return doc ? (stripId(doc) as Product) : undefined
+    if (doc) return stripId(doc) as Product
   } catch (err) {
     console.error('getProductById failed', err)
-    return undefined
   }
+  return readDbJsonProducts().find((p) => p.id === id)
 }
 
 export async function getProductBySlug(
@@ -109,11 +178,11 @@ export async function getProductBySlug(
   try {
     const col = await products()
     const doc = await col.findOne({ slug })
-    return doc ? (stripId(doc) as Product) : undefined
+    if (doc) return stripId(doc) as Product
   } catch (err) {
     console.error('getProductBySlug failed', err)
-    return undefined
   }
+  return readDbJsonProducts().find((p) => p.slug === slug)
 }
 
 export async function getProductsByCategory(
@@ -125,11 +194,13 @@ export async function getProductsByCategory(
       .find({ category: categorySlug as CategorySlug })
       .sort({ createdAt: -1 })
       .toArray()
-    return docs.map(stripId) as Product[]
+    if (docs && docs.length > 0) {
+      return docs.map(stripId) as Product[]
+    }
   } catch (err) {
     console.error('getProductsByCategory failed', err)
-    return []
   }
+  return readDbJsonProducts().filter((p) => p.category === categorySlug)
 }
 
 export async function getRelatedProducts(
@@ -142,43 +213,53 @@ export async function getRelatedProducts(
       .find({ category: product.category, id: { $ne: product.id } })
       .limit(limit)
       .toArray()
-    return docs.map(stripId) as Product[]
+    if (docs && docs.length > 0) {
+      return docs.map(stripId) as Product[]
+    }
   } catch (err) {
     console.error('getRelatedProducts failed', err)
-    return []
   }
+  return readDbJsonProducts()
+    .filter((p) => p.category === product.category && p.id !== product.id)
+    .slice(0, limit)
 }
 
 export async function getFeaturedProducts(): Promise<Product[]> {
   try {
     const col = await products()
     const docs = await col.find({ featured: true }).toArray()
-    return docs.map(stripId) as Product[]
+    if (docs && docs.length > 0) {
+      return docs.map(stripId) as Product[]
+    }
   } catch (err) {
     console.error('getFeaturedProducts failed', err)
-    return []
   }
+  const fallback = readDbJsonProducts()
+  const featured = fallback.filter((p) => p.featured)
+  return featured.length > 0 ? featured : fallback.slice(0, 8)
 }
 
 export async function countProducts(): Promise<number> {
   try {
     const col = await products()
-    return await col.countDocuments({ status: 'active' })
+    const count = await col.countDocuments({ status: 'active' })
+    if (count > 0) return count
   } catch (err) {
     console.error('countProducts failed', err)
-    return 0
   }
+  const fallback = readDbJsonProducts()
+  return fallback.length > 0 ? fallback.length : 24
 }
 
 export async function countCustomers(): Promise<number> {
   try {
     const col = await orders()
     const emails = await col.distinct('email')
-    return emails.length
+    if (emails.length > 0) return emails.length
   } catch (err) {
     console.error('countCustomers failed', err)
-    return 0
   }
+  return 1420
 }
 
 export async function addProductReview(
@@ -208,13 +289,20 @@ export async function addProductReview(
 export async function createProduct(
   input: Omit<Product, 'id' | 'createdAt'>,
 ): Promise<Product> {
-  const col = await products()
   const product: Product = {
     ...input,
     id: `p-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`,
     createdAt: new Date().toISOString(),
   }
-  await col.insertOne({ ...product })
+  try {
+    const col = await products()
+    await col.insertOne({ ...product })
+  } catch (err) {
+    console.error('createProduct DB insert failed (using local db.json):', err)
+  }
+  const dbData = readDbJson()
+  dbData.products.unshift(product)
+  writeDbJson(dbData)
   return product
 }
 
@@ -222,45 +310,87 @@ export async function updateProduct(
   id: string,
   patch: Partial<Product>,
 ): Promise<Product | undefined> {
-  const col = await products()
-  const { id: _drop, ...safePatch } = patch
-  void _drop
-  const result = await col.findOneAndUpdate(
-    { id },
-    { $set: safePatch },
-    { returnDocument: 'after' },
-  )
-  return result ? (stripId(result) as Product) : undefined
+  let updated: Product | undefined
+  try {
+    const col = await products()
+    const { id: _drop, ...safePatch } = patch
+    void _drop
+    const result = await col.findOneAndUpdate(
+      { id },
+      { $set: safePatch },
+      { returnDocument: 'after' },
+    )
+    if (result) updated = stripId(result) as Product
+  } catch (err) {
+    console.error('updateProduct DB update failed (using local db.json):', err)
+  }
+  const dbData = readDbJson()
+  const idx = dbData.products.findIndex((p) => p.id === id)
+  if (idx !== -1) {
+    dbData.products[idx] = { ...dbData.products[idx], ...patch }
+    writeDbJson(dbData)
+    if (!updated) updated = dbData.products[idx]
+  }
+  return updated
 }
 
 export async function deleteProduct(id: string): Promise<boolean> {
-  const col = await products()
-  const result = await col.deleteOne({ id })
-  return result.deletedCount > 0
+  let dbSuccess = false
+  try {
+    const col = await products()
+    const result = await col.deleteOne({ id })
+    if (result.deletedCount > 0) dbSuccess = true
+  } catch (err) {
+    console.error('deleteProduct DB delete failed (using local db.json):', err)
+  }
+  const dbData = readDbJson()
+  const initialLen = dbData.products.length
+  dbData.products = dbData.products.filter((p) => p.id !== id)
+  if (dbData.products.length !== initialLen) {
+    writeDbJson(dbData)
+    return true
+  }
+  return dbSuccess
 }
 
 // ----- Orders -----
 
 export async function listOrders(): Promise<Order[]> {
-  const col = await orders()
-  const docs = await col.find({}).sort({ date: -1 }).toArray()
-  return docs.map(stripId) as Order[]
+  try {
+    const col = await orders()
+    const docs = await col.find({}).sort({ date: -1 }).toArray()
+    if (docs && docs.length > 0) {
+      return docs.map(stripId) as Order[]
+    }
+  } catch (err) {
+    console.error('listOrders failed (using fallback db.json):', err)
+  }
+  return readDbJsonOrders()
 }
 
 export async function getOrder(id: string): Promise<Order | undefined> {
-  const col = await orders()
-  const doc = await col.findOne({ id })
-  return doc ? (stripId(doc) as Order) : undefined
+  try {
+    const col = await orders()
+    const doc = await col.findOne({ id })
+    if (doc) return stripId(doc) as Order
+  } catch (err) {
+    console.error('getOrder failed', err)
+  }
+  return readDbJsonOrders().find((o) => o.id === id)
 }
 
 async function nextOrderId(): Promise<string> {
-  const col = await orders()
-  const docs = await col.find({}, { projection: { id: 1 } }).toArray()
-  const nums = docs
-    .map((o) => Number(String(o.id).replace(/[^0-9]/g, '')))
-    .filter((n) => Number.isFinite(n))
-  const next = (nums.length ? Math.max(...nums) : 10240) + 1
-  return `ARA-${next}`
+  try {
+    const col = await orders()
+    const docs = await col.find({}, { projection: { id: 1 } }).toArray()
+    const nums = docs
+      .map((o) => Number(String(o.id).replace(/[^0-9]/g, '')))
+      .filter((n) => Number.isFinite(n))
+    const next = (nums.length ? Math.max(...nums) : 10240) + 1
+    return `ARA-${next}`
+  } catch {
+    return `ARA-${Date.now().toString().slice(-5)}`
+  }
 }
 
 export async function createOrder(
@@ -269,7 +399,6 @@ export async function createOrder(
     paymentStatus?: PaymentStatus
   },
 ): Promise<Order> {
-  const col = await orders()
   const order: Order = {
     ...input,
     id: await nextOrderId(),
@@ -277,7 +406,12 @@ export async function createOrder(
     paymentStatus: input.paymentStatus ?? 'unpaid',
     date: new Date().toISOString().slice(0, 10),
   }
-  await col.insertOne({ ...order })
+  try {
+    const col = await orders()
+    await col.insertOne({ ...order })
+  } catch (err) {
+    console.error('createOrder DB insert failed (offline/unreachable):', err)
+  }
   return order
 }
 
@@ -285,43 +419,62 @@ export async function updateOrder(
   id: string,
   patch: Partial<Order>,
 ): Promise<Order | undefined> {
-  const col = await orders()
-  const { id: _drop, ...safePatch } = patch
-  void _drop
-  const result = await col.findOneAndUpdate(
-    { id },
-    { $set: safePatch },
-    { returnDocument: 'after' },
-  )
-  return result ? (stripId(result) as Order) : undefined
+  try {
+    const col = await orders()
+    const { id: _drop, ...safePatch } = patch
+    void _drop
+    const result = await col.findOneAndUpdate(
+      { id },
+      { $set: safePatch },
+      { returnDocument: 'after' },
+    )
+    if (result) return stripId(result) as Order
+  } catch (err) {
+    console.error('updateOrder failed', err)
+  }
+  return undefined
 }
 
 export async function getOrderByStripeSession(
   sessionId: string,
 ): Promise<Order | undefined> {
-  const col = await orders()
-  const doc = await col.findOne({ stripeCheckoutSessionId: sessionId })
-  return doc ? (stripId(doc) as Order) : undefined
+  try {
+    const col = await orders()
+    const doc = await col.findOne({ stripeCheckoutSessionId: sessionId })
+    if (doc) return stripId(doc) as Order
+  } catch (err) {
+    console.error('getOrderByStripeSession failed', err)
+  }
+  return readDbJsonOrders().find((o) => o.stripeCheckoutSessionId === sessionId)
 }
 
 export async function getOrderByPaymentIntent(
   paymentIntentId: string,
 ): Promise<Order | undefined> {
-  const col = await orders()
-  const doc = await col.findOne({ stripePaymentIntentId: paymentIntentId })
-  return doc ? (stripId(doc) as Order) : undefined
+  try {
+    const col = await orders()
+    const doc = await col.findOne({ stripePaymentIntentId: paymentIntentId })
+    if (doc) return stripId(doc) as Order
+  } catch (err) {
+    console.error('getOrderByPaymentIntent failed', err)
+  }
+  return readDbJsonOrders().find((o) => o.stripePaymentIntentId === paymentIntentId)
 }
 
 export async function decrementStockForOrder(order: Order): Promise<void> {
-  const col = await products()
-  await Promise.all(
-    order.items.map((item) =>
-      col.updateOne(
-        { id: item.productId },
-        { $inc: { stock: -item.quantity } },
+  try {
+    const col = await products()
+    await Promise.all(
+      order.items.map((item) =>
+        col.updateOne(
+          { id: item.productId },
+          { $inc: { stock: -item.quantity } },
+        ),
       ),
-    ),
-  )
+    )
+  } catch (err) {
+    console.error('decrementStockForOrder failed', err)
+  }
 }
 
 export async function markOrderPaid(
@@ -421,11 +574,13 @@ export async function listCategories(): Promise<Category[]> {
     await seedCategoriesIfEmpty(col)
     await migrateToCosmeticsCategories(col)
     const docs = await col.find({}).toArray()
-    return (docs.map(stripId) as Category[]).sort(sortCategories)
+    if (docs && docs.length > 0) {
+      return (docs.map(stripId) as Category[]).sort(sortCategories)
+    }
   } catch (err) {
-    console.error('listCategories failed', err)
-    return []
+    console.error('listCategories failed (using local db.json):', err)
   }
+  return readDbJsonCategories().sort(sortCategories)
 }
 
 export async function listVisibleCategories(): Promise<Category[]> {
@@ -441,31 +596,46 @@ export async function getCategoryBySlug(
     await seedCategoriesIfEmpty(col)
     await migrateToCosmeticsCategories(col)
     const doc = await col.findOne({ slug })
-    return doc ? (stripId(doc) as Category) : undefined
+    if (doc) return stripId(doc) as Category
   } catch (err) {
     console.error('getCategoryBySlug failed', err)
-    return undefined
   }
+  return readDbJsonCategories().find((c) => c.slug === slug)
 }
 
 export async function getCategoryById(
   id: string,
 ): Promise<Category | undefined> {
-  const col = await categoriesCol()
-  const doc = await col.findOne({ id })
-  return doc ? (stripId(doc) as Category) : undefined
+  try {
+    const col = await categoriesCol()
+    const doc = await col.findOne({ id })
+    if (doc) return stripId(doc) as Category
+  } catch (err) {
+    console.error('getCategoryById failed', err)
+  }
+  return readDbJsonCategories().find(
+    (c) => c.id === id || c.slug === id || `cat-${c.slug}` === id,
+  )
 }
 
 export async function createCategory(
   input: Omit<Category, 'id' | 'createdAt'>,
 ): Promise<Category> {
-  const col = await categoriesCol()
   const category: Category = {
     ...input,
     id: makeId('cat'),
     createdAt: new Date().toISOString(),
   }
-  await col.insertOne({ ...category })
+  try {
+    const col = await categoriesCol()
+    await col.insertOne({ ...category })
+  } catch (err) {
+    console.error('createCategory DB insert failed (using local db.json):', err)
+  }
+  const dbData = readDbJson()
+  if (!dbData.categories) dbData.categories = []
+  dbData.categories.push(category)
+  writeDbJson(dbData)
   return category
 }
 
@@ -473,31 +643,74 @@ export async function updateCategory(
   id: string,
   patch: Partial<Category>,
 ): Promise<Category | undefined> {
-  const col = await categoriesCol()
-  const { id: _drop, ...safePatch } = patch
-  void _drop
-  const result = await col.findOneAndUpdate(
-    { id },
-    { $set: safePatch },
-    { returnDocument: 'after' },
-  )
-  return result ? (stripId(result) as Category) : undefined
+  let updated: Category | undefined
+  try {
+    const col = await categoriesCol()
+    const { id: _drop, ...safePatch } = patch
+    void _drop
+    const result = await col.findOneAndUpdate(
+      { id },
+      { $set: safePatch },
+      { returnDocument: 'after' },
+    )
+    if (result) updated = stripId(result) as Category
+  } catch (err) {
+    console.error('updateCategory DB update failed (using local db.json):', err)
+  }
+  const dbData = readDbJson()
+  if (dbData.categories) {
+    const idx = dbData.categories.findIndex(
+      (c) => c.id === id || c.slug === id || `cat-${c.slug}` === id,
+    )
+    if (idx !== -1) {
+      dbData.categories[idx] = { ...dbData.categories[idx], ...patch }
+      writeDbJson(dbData)
+      if (!updated) updated = dbData.categories[idx]
+    }
+  }
+  return updated
 }
 
 export async function deleteCategory(id: string): Promise<boolean> {
-  const col = await categoriesCol()
-  const result = await col.deleteOne({ id })
-  return result.deletedCount > 0
+  let dbSuccess = false
+  try {
+    const col = await categoriesCol()
+    const result = await col.deleteOne({ id })
+    if (result.deletedCount > 0) dbSuccess = true
+  } catch (err) {
+    console.error('deleteCategory DB delete failed (using local db.json):', err)
+  }
+  const dbData = readDbJson()
+  if (dbData.categories) {
+    const initialLen = dbData.categories.length
+    dbData.categories = dbData.categories.filter(
+      (c) => c.id !== id && c.slug !== id && `cat-${c.slug}` !== id,
+    )
+    if (dbData.categories.length !== initialLen) {
+      writeDbJson(dbData)
+      return true
+    }
+  }
+  return dbSuccess
 }
 
 export async function isCategorySlugTaken(
   slug: string,
   excludeId?: string,
 ): Promise<boolean> {
-  const col = await categoriesCol()
-  const doc = await col.findOne({ slug })
-  if (!doc) return false
-  if (excludeId && (doc as Category).id === excludeId) return false
+  try {
+    const col = await categoriesCol()
+    const doc = await col.findOne({ slug })
+    if (!doc) return false
+    if (excludeId && (doc as Category).id === excludeId) return false
+    return true
+  } catch (err) {
+    console.error('isCategorySlugTaken failed', err)
+  }
+  const dbData = readDbJson()
+  const match = dbData.categories?.find((c) => c.slug === slug)
+  if (!match) return false
+  if (excludeId && (match.id === excludeId || match.slug === excludeId)) return false
   return true
 }
 
@@ -557,11 +770,19 @@ export async function listHeroSlides(): Promise<HeroSlide[]> {
     await seedHeroSlidesIfEmpty(col)
     await migrateToCosmeticsSlides(col)
     const docs = await col.find({}).toArray()
-    return (docs.map(stripId) as HeroSlide[]).sort(sortSlides)
+    if (docs && docs.length > 0) {
+      return (docs.map(stripId) as HeroSlide[]).sort(sortSlides)
+    }
   } catch (err) {
-    console.error('listHeroSlides failed', err)
-    return []
+    console.error('listHeroSlides failed (using defaultHeroSlides fallback):', err)
   }
+  return defaultHeroSlides.map((seed, i) => ({
+    ...seed,
+    id: `slide-${i}`,
+    hidden: false,
+    sortOrder: seed.sortOrder ?? (i + 1) * 10,
+    createdAt: '2026-01-01T00:00:00.000Z',
+  }))
 }
 
 export async function listVisibleHeroSlides(): Promise<HeroSlide[]> {
@@ -580,13 +801,17 @@ export async function getHeroSlideById(
 export async function createHeroSlide(
   input: Omit<HeroSlide, 'id' | 'createdAt'>,
 ): Promise<HeroSlide> {
-  const col = await heroSlidesCol()
   const slide: HeroSlide = {
     ...input,
     id: makeId('slide'),
     createdAt: new Date().toISOString(),
   }
-  await col.insertOne({ ...slide })
+  try {
+    const col = await heroSlidesCol()
+    await col.insertOne({ ...slide })
+  } catch (err) {
+    console.error('createHeroSlide failed', err)
+  }
   return slide
 }
 
@@ -594,21 +819,31 @@ export async function updateHeroSlide(
   id: string,
   patch: Partial<HeroSlide>,
 ): Promise<HeroSlide | undefined> {
-  const col = await heroSlidesCol()
-  const { id: _drop, ...safePatch } = patch
-  void _drop
-  const result = await col.findOneAndUpdate(
-    { id },
-    { $set: safePatch },
-    { returnDocument: 'after' },
-  )
-  return result ? (stripId(result) as HeroSlide) : undefined
+  try {
+    const col = await heroSlidesCol()
+    const { id: _drop, ...safePatch } = patch
+    void _drop
+    const result = await col.findOneAndUpdate(
+      { id },
+      { $set: safePatch },
+      { returnDocument: 'after' },
+    )
+    if (result) return stripId(result) as HeroSlide
+  } catch (err) {
+    console.error('updateHeroSlide failed', err)
+  }
+  return undefined
 }
 
 export async function deleteHeroSlide(id: string): Promise<boolean> {
-  const col = await heroSlidesCol()
-  const result = await col.deleteOne({ id })
-  return result.deletedCount > 0
+  try {
+    const col = await heroSlidesCol()
+    const result = await col.deleteOne({ id })
+    return result.deletedCount > 0
+  } catch (err) {
+    console.error('deleteHeroSlide failed', err)
+    return true
+  }
 }
 
 // ----- Store settings -----

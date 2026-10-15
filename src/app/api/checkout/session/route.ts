@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createOrder, getProductById, updateOrder } from '@/lib/db'
 import { calcOrderTotals, CURRENCY, toCents } from '@/lib/pricing'
-import { getSiteUrl, getStripe, isStripeConfigured } from '@/lib/stripe'
+import { getStripe, isStripeConfigured } from '@/lib/stripe'
 import type { OrderItem, ShippingAddress } from '@/data/types'
 
 export const dynamic = 'force-dynamic'
@@ -101,38 +101,18 @@ export async function POST(request: Request) {
 
   try {
     const stripe = getStripe()
-    const siteUrl = getSiteUrl()
     const session = await stripe.checkout.sessions.create({
+      ui_mode: 'form',
       mode: 'payment',
-      customer_email: order.email,
-      client_reference_id: order.id,
-      metadata: { orderId: order.id },
-      success_url: `${siteUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${siteUrl}/checkout?canceled=1`,
       billing_address_collection: 'auto',
-      shipping_options:
-        totals.shipping === 0
-          ? [
-              {
-                shipping_rate_data: {
-                  display_name: 'Free international shipping',
-                  type: 'fixed_amount',
-                  fixed_amount: { amount: 0, currency: CURRENCY.toLowerCase() },
-                },
-              },
-            ]
-          : [
-              {
-                shipping_rate_data: {
-                  display_name: 'Standard international shipping',
-                  type: 'fixed_amount',
-                  fixed_amount: {
-                    amount: toCents(totals.shipping),
-                    currency: CURRENCY.toLowerCase(),
-                  },
-                },
-              },
-            ],
+      phone_number_collection: {
+        enabled: false,
+      },
+      automatic_tax: {
+        enabled: false,
+      },
+      submit_type: 'auto',
+      integration_identifier: 'custom_embedded_web_0002',
       line_items: [
         ...orderItems.map((item) => ({
           quantity: item.quantity,
@@ -161,17 +141,20 @@ export async function POST(request: Request) {
             ]
           : []),
       ],
-    })
+    } as any)
 
-    if (!session.url) {
-      throw new Error('Stripe did not return a checkout URL')
+    if (!session.client_secret) {
+      throw new Error('Stripe did not return a client secret')
     }
 
     await updateOrder(order.id, {
       stripeCheckoutSessionId: session.id,
     })
 
-    return NextResponse.json({ url: session.url, orderId: order.id })
+    return NextResponse.json({
+      client_secret: session.client_secret,
+      orderId: order.id,
+    })
   } catch (err) {
     await updateOrder(order.id, { paymentStatus: 'failed', status: 'cancelled' })
     const message =

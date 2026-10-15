@@ -1,5 +1,12 @@
 import 'server-only'
+import dns from 'dns'
 import { MongoClient, type Db } from 'mongodb'
+
+try {
+  dns.setServers(['8.8.8.8', '1.1.1.1'])
+} catch {
+  // ignore if restricted
+}
 
 const uri = process.env.MONGODB_URI
 const dbName = process.env.MONGODB_DB || 'threadandgear'
@@ -18,8 +25,8 @@ declare global {
 function connect(): Promise<MongoClient> {
   const promise = new MongoClient(uri!, {
     maxPoolSize: 10,
-    serverSelectionTimeoutMS: 15000,
-    socketTimeoutMS: 45000,
+    serverSelectionTimeoutMS: 4000,
+    socketTimeoutMS: 15000,
     retryWrites: true,
   }).connect()
 

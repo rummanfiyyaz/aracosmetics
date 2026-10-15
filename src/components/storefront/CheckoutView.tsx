@@ -89,7 +89,7 @@ export function CheckoutView() {
     setPreparing(true)
 
     try {
-      const res = await fetch('/api/checkout/intent', {
+      const res = await fetch('/api/checkout/session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -112,13 +112,15 @@ export function CheckoutView() {
         }),
       })
       const data = (await res.json()) as {
+        client_secret?: string
         clientSecret?: string
         error?: string
       }
-      if (!res.ok || !data.clientSecret) {
+      const secret = data.client_secret || data.clientSecret
+      if (!res.ok || !secret) {
         throw new Error(data.error || 'Unable to start payment.')
       }
-      setClientSecret(data.clientSecret)
+      setClientSecret(secret)
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Something went wrong.'
       toast({ title: 'Checkout failed', description: message, variant: 'error' })

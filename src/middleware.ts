@@ -37,7 +37,11 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next()
   }
 
-  if (pathname.startsWith('/api/checkout/') && req.method === 'POST') {
+  if (
+    (pathname.startsWith('/api/checkout/') ||
+      pathname === '/api/create-checkout-session') &&
+    req.method === 'POST'
+  ) {
     return NextResponse.next()
   }
 

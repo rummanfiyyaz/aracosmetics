@@ -11,7 +11,10 @@ export function getStripe(): Stripe {
     )
   }
   if (!stripe) {
-    stripe = new Stripe(key)
+    stripe = new Stripe(key, {
+      apiVersion:
+        '2026-03-25.dahlia; custom_checkout_payment_form_preview=v1' as any,
+    })
   }
   return stripe
 }
