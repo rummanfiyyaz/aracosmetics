@@ -42,6 +42,7 @@ export function CheckoutView() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({})
   const [preparing, setPreparing] = useState(false)
   const [clientSecret, setClientSecret] = useState<string | null>(null)
+  const [orderId, setOrderId] = useState<string | null>(null)
   const { toast } = useToast()
 
   const { shipping, tax, total } = useMemo(
@@ -114,6 +115,7 @@ export function CheckoutView() {
       const data = (await res.json()) as {
         client_secret?: string
         clientSecret?: string
+        orderId?: string
         error?: string
       }
       const secret = data.client_secret || data.clientSecret
@@ -121,6 +123,9 @@ export function CheckoutView() {
         throw new Error(data.error || 'Unable to start payment.')
       }
       setClientSecret(secret)
+      if (data.orderId) {
+        setOrderId(data.orderId)
+      }
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Something went wrong.'
       toast({ title: 'Checkout failed', description: message, variant: 'error' })
@@ -267,6 +272,7 @@ export function CheckoutView() {
               <div className="mt-4">
                 <CheckoutPayment
                   clientSecret={clientSecret}
+                  orderId={orderId || undefined}
                   amount={total}
                   customer={form.customer}
                   email={form.email}
@@ -282,7 +288,10 @@ export function CheckoutView() {
                 <button
                   type="button"
                   className="mt-4 text-sm text-ink-500 underline-offset-2 hover:text-ink-800 hover:underline"
-                  onClick={() => setClientSecret(null)}
+                  onClick={() => {
+                    setClientSecret(null)
+                    setOrderId(null)
+                  }}
                 >
                   Edit shipping details
                 </button>

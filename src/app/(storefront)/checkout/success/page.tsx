@@ -8,9 +8,10 @@ export const dynamic = 'force-dynamic'
 export default async function Page({
   searchParams,
 }: {
-  searchParams: { session_id?: string; payment_intent?: string }
+  searchParams: { session_id?: string; payment_intent?: string; order_id?: string }
 }) {
   const order = await resolveCheckoutOrder({
+    orderId: searchParams.order_id,
     sessionId: searchParams.session_id,
     paymentIntentId: searchParams.payment_intent,
   })

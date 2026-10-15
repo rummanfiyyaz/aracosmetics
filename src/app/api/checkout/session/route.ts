@@ -100,10 +100,19 @@ export async function POST(request: Request) {
   })
 
   try {
+    const origin =
+      request.headers.get('origin') ||
+      (request.headers.get('host')
+        ? `${request.headers.get('x-forwarded-proto') || 'http'}://${request.headers.get('host')}`
+        : null) ||
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      'http://localhost:3000'
+
     const stripe = getStripe()
     const session = await stripe.checkout.sessions.create({
       ui_mode: 'form',
       mode: 'payment',
+      return_url: `${origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}&order_id=${order.id}`,
       billing_address_collection: 'auto',
       phone_number_collection: {
         enabled: false,

@@ -26,6 +26,7 @@ const appearance = {
 
 interface CheckoutPaymentProps {
   clientSecret?: string
+  orderId?: string
   amount?: number
   customer?: string
   email?: string
@@ -40,7 +41,10 @@ interface CheckoutPaymentProps {
   }
 }
 
-export function CheckoutPayment({ clientSecret: clientSecretProp }: CheckoutPaymentProps) {
+export function CheckoutPayment({
+  clientSecret: clientSecretProp,
+  orderId,
+}: CheckoutPaymentProps) {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -104,8 +108,12 @@ export function CheckoutPayment({ clientSecret: clientSecretProp }: CheckoutPaym
         if (loadActionsResult.type === 'success') {
           form.on('confirm', async (event: any) => {
             try {
+              const successUrl = `${window.location.origin}/checkout/success${
+                orderId ? `?order_id=${encodeURIComponent(orderId)}` : ''
+              }`
               const confirmResult = await loadActionsResult.actions.confirm({
                 formConfirmEvent: event,
+                returnUrl: successUrl,
               })
               if (confirmResult?.error) {
                 setError(confirmResult.error.message || 'Payment confirmation error')
