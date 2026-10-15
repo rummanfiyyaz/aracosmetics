@@ -108,12 +108,8 @@ export function CheckoutPayment({
         if (loadActionsResult.type === 'success') {
           form.on('confirm', async (event: any) => {
             try {
-              const successUrl = `${window.location.origin}/checkout/success${
-                orderId ? `?order_id=${encodeURIComponent(orderId)}` : ''
-              }`
               const confirmResult = await loadActionsResult.actions.confirm({
                 formConfirmEvent: event,
-                returnUrl: successUrl,
               })
               if (confirmResult?.error) {
                 setError(confirmResult.error.message || 'Payment confirmation error')

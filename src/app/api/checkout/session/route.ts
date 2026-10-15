@@ -113,6 +113,10 @@ export async function POST(request: Request) {
       ui_mode: 'form',
       mode: 'payment',
       return_url: `${origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}&order_id=${order.id}`,
+      client_reference_id: order.id,
+      metadata: {
+        orderId: order.id,
+      },
       billing_address_collection: 'auto',
       phone_number_collection: {
         enabled: false,
