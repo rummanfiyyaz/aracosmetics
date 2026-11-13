@@ -4,12 +4,14 @@ import path from 'path'
 import type { Collection } from 'mongodb'
 import { getDb } from './mongo'
 import type {
+  AboutPageData,
   Category,
   CategorySlug,
   HeroSlide,
   Order,
   OrderStatus,
   PaymentStatus,
+  PolicyPageData,
   Product,
   Review,
   StoreSettings,
@@ -889,6 +891,129 @@ export async function updateStoreSettings(
   await col.updateOne(
     { key: 'store' },
     { $set: { ...next, key: 'store' } },
+    { upsert: true },
+  )
+  return next
+}
+
+// ----- About Us and Policy Content -----
+
+export const DEFAULT_ABOUT_DATA: AboutPageData = {
+  title: 'About ARA',
+  lede: 'A quiet cosmetics house for everyday skin, color and scent.',
+  story: `ARA is built for people who want less noise and better formulas. We edit a small catalog of skincare, makeup, hair, fragrance and body care — then ship it worldwide.
+
+Every product is chosen for how it feels on skin, how it wears through a day, and whether we would use it ourselves. No filler, no local-only checkout, no gimmicks.`,
+  address: '',
+  email: 'hello@ara.store',
+  phone: '',
+}
+
+export const DEFAULT_PRIVACY_DATA: PolicyPageData = {
+  title: 'Privacy policy',
+  lede: 'We collect only what we need to fulfill your order.',
+  content: `When you check out we store your name, email, shipping address and order details so we can pack, ship and support the purchase.
+
+Card payments are processed by Stripe. We never store full card numbers on our servers.
+
+We do not sell personal data. Analytics or advertising pixels, if enabled, only measure store performance.`,
+}
+
+export const DEFAULT_TERMS_DATA: PolicyPageData = {
+  title: 'Terms of service',
+  lede: 'By placing an order you agree to these terms.',
+  content: `Prices are shown in US dollars and are charged through Stripe at checkout. An order is confirmed only after payment succeeds.
+
+We may refuse or cancel an order if an item is out of stock, a payment fails, or we detect fraud. In those cases you will not be charged, or you will be refunded.
+
+Risk of loss passes to you when the carrier collects the parcel. Please inspect packages on arrival and contact us if something is missing or damaged.`,
+}
+
+export async function getAboutData(): Promise<AboutPageData> {
+  try {
+    const db = await getDb()
+    const doc = await db.collection('settings').findOne({ key: 'about' })
+    if (!doc) return DEFAULT_ABOUT_DATA
+    const { key: _key, _id: _id, ...rest } = doc as any
+    void _key
+    void _id
+    return { ...DEFAULT_ABOUT_DATA, ...rest }
+  } catch (err) {
+    console.error('getAboutData failed', err)
+    return DEFAULT_ABOUT_DATA
+  }
+}
+
+export async function updateAboutData(
+  patch: Partial<AboutPageData>,
+): Promise<AboutPageData> {
+  const db = await getDb()
+  const col = db.collection('settings')
+  const current = await getAboutData()
+  const next: AboutPageData = { ...current, ...patch }
+  await col.updateOne(
+    { key: 'about' },
+    { $set: { ...next, key: 'about' } },
+    { upsert: true },
+  )
+  return next
+}
+
+export async function getPrivacyData(): Promise<PolicyPageData> {
+  try {
+    const db = await getDb()
+    const doc = await db.collection('settings').findOne({ key: 'privacy' })
+    if (!doc) return DEFAULT_PRIVACY_DATA
+    const { key: _key, _id: _id, ...rest } = doc as any
+    void _key
+    void _id
+    return { ...DEFAULT_PRIVACY_DATA, ...rest }
+  } catch (err) {
+    console.error('getPrivacyData failed', err)
+    return DEFAULT_PRIVACY_DATA
+  }
+}
+
+export async function updatePrivacyData(
+  patch: Partial<PolicyPageData>,
+): Promise<PolicyPageData> {
+  const db = await getDb()
+  const col = db.collection('settings')
+  const current = await getPrivacyData()
+  const next: PolicyPageData = { ...current, ...patch }
+  await col.updateOne(
+    { key: 'privacy' },
+    { $set: { ...next, key: 'privacy' } },
+    { upsert: true },
+  )
+  return next
+}
+
+export async function getTermsData(): Promise<PolicyPageData> {
+  try {
+    const db = await getDb()
+    const doc = await db.collection('settings').findOne({ key: 'terms' })
+    if (!doc) return DEFAULT_TERMS_DATA
+    const { key: _key, _id: _id, ...rest } = doc as any
+    void _key
+    void _id
+    return { ...DEFAULT_TERMS_DATA, ...rest }
+  } catch (err) {
+    console.error('getTermsData failed', err)
+    return DEFAULT_TERMS_DATA
+  }
+}
+
+export async function updateTermsData(
+  patch: Partial<PolicyPageData>,
+): Promise<PolicyPageData> {
+  const db = await getDb()
+  const col = db.collection('settings')
+  const current = await getTermsData()
+  const next: PolicyPageData = { ...current, ...patch }
+  await col.updateOne(
+    { key: 'terms' },
+    { $set: { ...next, key: 'terms' } },
     { upsert: true },
   )
   return next

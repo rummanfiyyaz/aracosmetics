@@ -1,25 +1,28 @@
 import { ContentPage } from '@/components/storefront/ContentPage'
+import { DEFAULT_TERMS_DATA, getTermsData } from '@/lib/db'
 
-export default function Page() {
+export const dynamic = 'force-dynamic'
+
+export default async function Page() {
+  const terms = await getTermsData().catch(() => DEFAULT_TERMS_DATA)
+
+  const paragraphs = (terms.content || '')
+    .split(/\n\n+/)
+    .map((p) => p.trim())
+    .filter(Boolean)
+
   return (
     <ContentPage
-      title="Terms of service"
-      lede="By placing an order you agree to these terms."
+      title={terms.title || 'Terms of service'}
+      lede={terms.lede || 'By placing an order you agree to these terms.'}
     >
-      <p>
-        Prices are shown in US dollars and are charged through Stripe at
-        checkout. An order is confirmed only after payment succeeds.
-      </p>
-      <p>
-        We may refuse or cancel an order if an item is out of stock, a
-        payment fails, or we detect fraud. In those cases you will not be
-        charged, or you will be refunded.
-      </p>
-      <p>
-        Risk of loss passes to you when the carrier collects the parcel.
-        Please inspect packages on arrival and contact us if something is
-        missing or damaged.
-      </p>
+      <div className="space-y-4">
+        {paragraphs.map((p, idx) => (
+          <p key={idx} className="whitespace-pre-line">
+            {p}
+          </p>
+        ))}
+      </div>
     </ContentPage>
   )
 }

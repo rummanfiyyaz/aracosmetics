@@ -113,6 +113,21 @@ export interface StoreSettings {
   description: string
 }
 
+export interface AboutPageData {
+  title: string
+  lede: string
+  story: string
+  address: string
+  email: string
+  phone: string
+}
+
+export interface PolicyPageData {
+  title: string
+  lede: string
+  content: string
+}
+
 export interface Order {
   id: string
   customer: string

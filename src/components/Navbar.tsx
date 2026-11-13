@@ -52,6 +52,7 @@ export function Navbar({
   const navLinks = [
     { href: '/', label: 'Home' },
     ...categories.map((c) => ({ href: `/${c.slug}`, label: c.name })),
+    { href: '/about', label: 'About Us' },
   ]
 
   const isActive = (href: string) =>

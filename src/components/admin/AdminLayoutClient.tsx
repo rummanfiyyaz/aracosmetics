@@ -9,9 +9,11 @@ import {
   IconClipboard,
   IconClose,
   IconGrid,
+  IconInfo,
   IconLogo,
   IconMenu,
   IconSettings,
+  IconShield,
   IconTrend,
 } from '@/components/icons'
 
@@ -21,6 +23,8 @@ const navItems = [
   { href: '/admin/categories', label: 'Categories', icon: <IconGrid /> },
   { href: '/admin/hero-slides', label: 'Hero slides', icon: <IconTrend /> },
   { href: '/admin/orders', label: 'Orders', icon: <IconClipboard /> },
+  { href: '/admin/about', label: 'About Us', icon: <IconInfo /> },
+  { href: '/admin/privacy', label: 'Privacy Policy', icon: <IconShield /> },
   { href: '/admin/settings', label: 'Settings', icon: <IconSettings /> },
 ]
 
