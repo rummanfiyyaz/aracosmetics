@@ -60,16 +60,16 @@ export function Navbar({
 
   return (
     <>
-      <div className="bg-ink-900 text-white">
+      <div className="bg-[#120f0d] text-ink-300 border-b border-white/5">
         <div className="container-page flex flex-col items-center justify-center gap-0.5 py-2 text-center text-[11px] sm:flex-row sm:gap-3 sm:text-xs">
-          <span>Free shipping on all orders</span>
-          <span className="hidden text-ink-400 sm:inline" aria-hidden>
-            ·
+          <span className="font-medium text-white/95">Free worldwide shipping on all orders</span>
+          <span className="hidden text-brand-400 sm:inline" aria-hidden>
+            ✦
           </span>
-          <span>Secure checkout · Ships worldwide</span>
+          <span className="text-ink-400">Secure checkout · Tracking on every order</span>
         </div>
       </div>
-      <header className="sticky top-0 z-30 border-b border-ink-100 bg-white/80 backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-ink-100/90 bg-white/95 backdrop-blur-md shadow-[0_2px_15px_-4px_rgba(20,16,14,0.05)]">
         <div className="container-page flex h-16 items-center gap-4">
           <button
             type="button"
@@ -79,35 +79,35 @@ export function Navbar({
           >
             <IconMenu />
           </button>
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-ink-900 text-white">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+            <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-ink-900 to-ink-800 text-white shadow-sm ring-1 ring-black/5 group-hover:scale-105 transition-transform">
               <IconLogo width={20} height={20} />
             </span>
-            <span className="text-lg font-semibold tracking-tight text-ink-900">
+            <span className="text-lg font-bold tracking-tight text-ink-900">
               {storeName}
             </span>
           </Link>
-          <nav className="ml-4 hidden items-center gap-1 lg:flex">
+          <nav className="ml-5 hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                  'rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-150',
                   isActive(link.href)
-                    ? 'text-ink-900 bg-ink-100'
-                    : 'text-ink-600 hover:text-ink-900 hover:bg-ink-50',
+                    ? 'text-brand-700 bg-brand-50/80 font-semibold shadow-xs'
+                    : 'text-ink-600 hover:text-ink-950 hover:bg-ink-100/60',
                 )}
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-          <div className="ml-auto flex items-center gap-1">
+          <div className="ml-auto flex items-center gap-1.5">
             <button
               type="button"
               onClick={() => setSearchOpen((v) => !v)}
-              className="rounded-lg p-2 text-ink-700 hover:bg-ink-100"
+              className="rounded-xl p-2 text-ink-700 hover:bg-ink-100 hover:text-ink-950 transition-colors"
               aria-label="Search"
             >
               <IconSearch />
@@ -115,12 +115,12 @@ export function Navbar({
             <button
               type="button"
               onClick={openCart}
-              className="relative rounded-lg p-2 text-ink-700 hover:bg-ink-100"
+              className="relative rounded-xl p-2 text-ink-700 hover:bg-ink-100 hover:text-ink-950 transition-colors"
               aria-label="Open cart"
             >
               <IconCart />
               {count > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 grid h-5 min-w-5 place-items-center rounded-full bg-ink-900 px-1 text-[10px] font-semibold text-white">
+                <span className="absolute -right-0.5 -top-0.5 grid h-5 min-w-5 place-items-center rounded-full bg-brand-600 px-1 text-[10px] font-bold text-white shadow-sm">
                   {count}
                 </span>
               )}
@@ -237,9 +237,9 @@ export function Navbar({
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
+                  'block rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors',
                   isActive(link.href)
-                    ? 'bg-ink-100 text-ink-900'
+                    ? 'bg-brand-50 text-brand-700 font-semibold'
                     : 'text-ink-700 hover:bg-ink-50',
                 )}
               >

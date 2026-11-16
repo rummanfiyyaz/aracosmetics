@@ -1,23 +1,28 @@
 import { ContentPage } from '@/components/storefront/ContentPage'
+import { DEFAULT_SHIPPING_DATA, getShippingData } from '@/lib/db'
 
-export default function Page() {
+export const dynamic = 'force-dynamic'
+
+export default async function Page() {
+  const shipping = await getShippingData().catch(() => DEFAULT_SHIPPING_DATA)
+
+  const paragraphs = (shipping.content || '')
+    .split(/\n\n+/)
+    .map((p) => p.trim())
+    .filter(Boolean)
+
   return (
     <ContentPage
-      title="Shipping"
-      lede="We ship worldwide from a single studio, with tracking on every order."
+      title={shipping.title || 'Shipping'}
+      lede={shipping.lede || 'We ship worldwide from a single studio, with tracking on every order.'}
     >
-      <p>
-        Free tracked shipping is included on all orders worldwide.
-      </p>
-      <p>
-        Paid orders leave within 1–2 business days. International delivery
-        typically takes 5–10 business days depending on destination and
-        customs.
-      </p>
-      <p>
-        You will receive a tracking email as soon as the parcel is handed to
-        the carrier.
-      </p>
+      <div className="space-y-4">
+        {paragraphs.map((p, idx) => (
+          <p key={idx} className="whitespace-pre-line">
+            {p}
+          </p>
+        ))}
+      </div>
     </ContentPage>
   )
 }

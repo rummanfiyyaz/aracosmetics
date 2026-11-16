@@ -9,6 +9,7 @@ import {
   IconClipboard,
   IconClose,
   IconGrid,
+  IconHeadphones,
   IconInfo,
   IconLogo,
   IconMenu,
@@ -24,6 +25,7 @@ const navItems = [
   { href: '/admin/hero-slides', label: 'Hero slides', icon: <IconTrend /> },
   { href: '/admin/orders', label: 'Orders', icon: <IconClipboard /> },
   { href: '/admin/about', label: 'About Us', icon: <IconInfo /> },
+  { href: '/admin/support', label: 'Support Pages', icon: <IconHeadphones /> },
   { href: '/admin/privacy', label: 'Privacy Policy', icon: <IconShield /> },
   { href: '/admin/settings', label: 'Settings', icon: <IconSettings /> },
 ]

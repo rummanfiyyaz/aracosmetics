@@ -7,6 +7,7 @@ import type {
   AboutPageData,
   Category,
   CategorySlug,
+  ContactPageData,
   HeroSlide,
   Order,
   OrderStatus,
@@ -1014,6 +1015,129 @@ export async function updateTermsData(
   await col.updateOne(
     { key: 'terms' },
     { $set: { ...next, key: 'terms' } },
+    { upsert: true },
+  )
+  return next
+}
+
+// ----- Support Content: Shipping, Returns, Contact / Order Help -----
+
+export const DEFAULT_SHIPPING_DATA: PolicyPageData = {
+  title: 'Shipping',
+  lede: 'We ship worldwide from a single studio, with tracking on every order.',
+  content: `Free tracked shipping is included on all orders worldwide.
+
+Paid orders leave within 1–2 business days. International delivery typically takes 5–10 business days depending on destination and customs.
+
+You will receive a tracking email as soon as the parcel is handed to the carrier.`,
+}
+
+export const DEFAULT_RETURNS_DATA: PolicyPageData = {
+  title: 'Returns',
+  lede: 'If it isn’t right, send it back within 30 days.',
+  content: `Unused items in original packaging can be returned within 30 days of delivery for a refund to the original payment method.
+
+Opened cosmetics cannot be returned for hygiene reasons, unless the product is damaged or not as described.
+
+Email us with your order number and we will send a return label or prepaid instructions.`,
+}
+
+export const DEFAULT_CONTACT_DATA: ContactPageData = {
+  title: 'Contact & Order Help',
+  lede: 'Questions about an order, a formula, or shipping? We are here.',
+  content: `Email us with your order number if you have one. We reply within one business day, Monday to Friday.
+
+Our customer care team is available to help with tracking updates, damaged items, ingredient queries, and order assistance.`,
+  email: 'hello@ara.store',
+  phone: '+1 (555) 019-2834',
+  hours: 'Monday – Friday, 9:00 AM – 6:00 PM EST',
+}
+
+export async function getShippingData(): Promise<PolicyPageData> {
+  try {
+    const db = await getDb()
+    const doc = await db.collection('settings').findOne({ key: 'shipping' })
+    if (!doc) return DEFAULT_SHIPPING_DATA
+    const { key: _key, _id: _id, ...rest } = doc as any
+    void _key
+    void _id
+    return { ...DEFAULT_SHIPPING_DATA, ...rest }
+  } catch (err) {
+    console.error('getShippingData failed', err)
+    return DEFAULT_SHIPPING_DATA
+  }
+}
+
+export async function updateShippingData(
+  patch: Partial<PolicyPageData>,
+): Promise<PolicyPageData> {
+  const db = await getDb()
+  const col = db.collection('settings')
+  const current = await getShippingData()
+  const next: PolicyPageData = { ...current, ...patch }
+  await col.updateOne(
+    { key: 'shipping' },
+    { $set: { ...next, key: 'shipping' } },
+    { upsert: true },
+  )
+  return next
+}
+
+export async function getReturnsData(): Promise<PolicyPageData> {
+  try {
+    const db = await getDb()
+    const doc = await db.collection('settings').findOne({ key: 'returns' })
+    if (!doc) return DEFAULT_RETURNS_DATA
+    const { key: _key, _id: _id, ...rest } = doc as any
+    void _key
+    void _id
+    return { ...DEFAULT_RETURNS_DATA, ...rest }
+  } catch (err) {
+    console.error('getReturnsData failed', err)
+    return DEFAULT_RETURNS_DATA
+  }
+}
+
+export async function updateReturnsData(
+  patch: Partial<PolicyPageData>,
+): Promise<PolicyPageData> {
+  const db = await getDb()
+  const col = db.collection('settings')
+  const current = await getReturnsData()
+  const next: PolicyPageData = { ...current, ...patch }
+  await col.updateOne(
+    { key: 'returns' },
+    { $set: { ...next, key: 'returns' } },
+    { upsert: true },
+  )
+  return next
+}
+
+export async function getContactData(): Promise<ContactPageData> {
+  try {
+    const db = await getDb()
+    const doc = await db.collection('settings').findOne({ key: 'contact' })
+    if (!doc) return DEFAULT_CONTACT_DATA
+    const { key: _key, _id: _id, ...rest } = doc as any
+    void _key
+    void _id
+    return { ...DEFAULT_CONTACT_DATA, ...rest }
+  } catch (err) {
+    console.error('getContactData failed', err)
+    return DEFAULT_CONTACT_DATA
+  }
+}
+
+export async function updateContactData(
+  patch: Partial<ContactPageData>,
+): Promise<ContactPageData> {
+  const db = await getDb()
+  const col = db.collection('settings')
+  const current = await getContactData()
+  const next: ContactPageData = { ...current, ...patch }
+  await col.updateOne(
+    { key: 'contact' },
+    { $set: { ...next, key: 'contact' } },
     { upsert: true },
   )
   return next

@@ -1,23 +1,28 @@
 import { ContentPage } from '@/components/storefront/ContentPage'
+import { DEFAULT_RETURNS_DATA, getReturnsData } from '@/lib/db'
 
-export default function Page() {
+export const dynamic = 'force-dynamic'
+
+export default async function Page() {
+  const returns = await getReturnsData().catch(() => DEFAULT_RETURNS_DATA)
+
+  const paragraphs = (returns.content || '')
+    .split(/\n\n+/)
+    .map((p) => p.trim())
+    .filter(Boolean)
+
   return (
     <ContentPage
-      title="Returns"
-      lede="If it isn’t right, send it back within 30 days."
+      title={returns.title || 'Returns'}
+      lede={returns.lede || 'If it isn’t right, send it back within 30 days.'}
     >
-      <p>
-        Unused items in original packaging can be returned within 30 days of
-        delivery for a refund to the original payment method.
-      </p>
-      <p>
-        Opened cosmetics cannot be returned for hygiene reasons, unless the
-        product is damaged or not as described.
-      </p>
-      <p>
-        Email us with your order number and we will send a return label or
-        prepaid instructions.
-      </p>
+      <div className="space-y-4">
+        {paragraphs.map((p, idx) => (
+          <p key={idx} className="whitespace-pre-line">
+            {p}
+          </p>
+        ))}
+      </div>
     </ContentPage>
   )
 }

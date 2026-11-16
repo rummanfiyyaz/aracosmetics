@@ -128,6 +128,15 @@ export interface PolicyPageData {
   content: string
 }
 
+export interface ContactPageData {
+  title: string
+  lede: string
+  content: string
+  email: string
+  phone: string
+  hours: string
+}
+
 export interface Order {
   id: string
   customer: string
